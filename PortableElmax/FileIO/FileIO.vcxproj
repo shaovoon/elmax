@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D0B0F8E7-BB36-4251-9254-1C5A2D667A69}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>FileIO</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\wong\Documents\boost_1_55_0\boost_1_55_0;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\Users\wong\Documents\boost_1_55_0\boost_1_55_0;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_MICROSOFT;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_MICROSOFT;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Common\Common.h" />
+    <ClInclude Include="Common\Enumeration.h" />
+    <ClInclude Include="Common\RAII_Array.h" />
+    <ClInclude Include="ElmaxFile.h" />
+    <ClInclude Include="Microsoft\WinOperation.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Text\Reader\AsciiReader.h" />
+    <ClInclude Include="Text\Reader\AsciiReaderA.h" />
+    <ClInclude Include="Text\Reader\BaseTextReader.h" />
+    <ClInclude Include="Text\Reader\BaseTextReaderA.h" />
+    <ClInclude Include="Text\Reader\BEUnicodeReader.h" />
+    <ClInclude Include="Text\Reader\UnicodeReader.h" />
+    <ClInclude Include="Text\Reader\UTF8Reader.h" />
+    <ClInclude Include="Text\Reader\UTF8ReaderA.h" />
+    <ClInclude Include="Text\Reader\xTextReader.h" />
+    <ClInclude Include="Text\Reader\xTextReaderA.h" />
+    <ClInclude Include="Text\Utils\StrUtil.h" />
+    <ClInclude Include="Text\Utils\StrUtilA.h" />
+    <ClInclude Include="Text\Writer\AsciiWriter.h" />
+    <ClInclude Include="Text\Writer\AsciiWriterA.h" />
+    <ClInclude Include="Text\Writer\BaseTextWriter.h" />
+    <ClInclude Include="Text\Writer\BaseTextWriterA.h" />
+    <ClInclude Include="Text\Writer\BEUnicodeWriter.h" />
+    <ClInclude Include="Text\Writer\UnicodeWriter.h" />
+    <ClInclude Include="Text\Writer\UTF8Writer.h" />
+    <ClInclude Include="Text\Writer\UTF8WriterA.h" />
+    <ClInclude Include="Text\Writer\xTextWriter.h" />
+    <ClInclude Include="Text\Writer\xTextWriterA.h" />
+    <ClInclude Include="UTF16Utils\utf16.h" />
+    <ClInclude Include="UTF8Utils\utf8.h" />
+    <ClInclude Include="UTF8Utils\utf8\checked.h" />
+    <ClInclude Include="UTF8Utils\utf8\core.h" />
+    <ClInclude Include="UTF8Utils\utf8\unchecked.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Common\Common.cpp" />
+    <ClCompile Include="Common\Enumeration.cpp" />
+    <ClCompile Include="Common\RAII_Array.cpp" />
+    <ClCompile Include="Microsoft\WinOperation.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Text\Reader\AsciiReader.cpp" />
+    <ClCompile Include="Text\Reader\AsciiReaderA.cpp" />
+    <ClCompile Include="Text\Reader\BaseTextReader.cpp" />
+    <ClCompile Include="Text\Reader\BaseTextReaderA.cpp" />
+    <ClCompile Include="Text\Reader\BEUnicodeReader.cpp" />
+    <ClCompile Include="Text\Reader\UnicodeReader.cpp" />
+    <ClCompile Include="Text\Reader\UTF8Reader.cpp" />
+    <ClCompile Include="Text\Reader\UTF8ReaderA.cpp" />
+    <ClCompile Include="Text\Reader\xTextReader.cpp" />
+    <ClCompile Include="Text\Reader\xTextReaderA.cpp" />
+    <ClCompile Include="Text\Utils\StrUtil.cpp" />
+    <ClCompile Include="Text\Utils\StrUtilA.cpp" />
+    <ClCompile Include="Text\Writer\AsciiWriter.cpp" />
+    <ClCompile Include="Text\Writer\AsciiWriterA.cpp" />
+    <ClCompile Include="Text\Writer\BaseTextWriter.cpp" />
+    <ClCompile Include="Text\Writer\BaseTextWriterA.cpp" />
+    <ClCompile Include="Text\Writer\BEUnicodeWriter.cpp" />
+    <ClCompile Include="Text\Writer\UnicodeWriter.cpp" />
+    <ClCompile Include="Text\Writer\UTF8Writer.cpp" />
+    <ClCompile Include="Text\Writer\UTF8WriterA.cpp" />
+    <ClCompile Include="Text\Writer\xTextWriter.cpp" />
+    <ClCompile Include="Text\Writer\xTextWriterA.cpp" />
+    <ClCompile Include="UTF16Utils\utf16.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

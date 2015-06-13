@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PortableElmax_VS2005", "PortableElmax\PortableElmax_VS2005.vcproj", "{84AFA599-CA52-4137-B287-4F2B12899CE2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7C8DCB4B-1F99-4B79-A876-1C77D39E85AE} = {7C8DCB4B-1F99-4B79-A876-1C77D39E85AE}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FileIO_VS2005", "FileIO\FileIO_VS2005.vcproj", "{7C8DCB4B-1F99-4B79-A876-1C77D39E85AE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PreVS2012UnitTestElmax_VS2005", "PreVS2012UnitTestElmax\PreVS2012UnitTestElmax_VS2005.vcproj", "{04517160-207A-496E-9DB4-EAF148921551}"
+	ProjectSection(ProjectDependencies) = postProject
+		{84AFA599-CA52-4137-B287-4F2B12899CE2} = {84AFA599-CA52-4137-B287-4F2B12899CE2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SequelMax_VS2005", "SequelMax\SequelMax_VS2005.vcproj", "{AE479507-702C-4FA1-8275-0FEBC9E50F9E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7C8DCB4B-1F99-4B79-A876-1C77D39E85AE} = {7C8DCB4B-1F99-4B79-A876-1C77D39E85AE}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSequelMax_VS2005", "TestSequelMax\TestSequelMax_VS2005.vcproj", "{17F5441C-4CD2-45EB-B19E-07B5116755EE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AE479507-702C-4FA1-8275-0FEBC9E50F9E} = {AE479507-702C-4FA1-8275-0FEBC9E50F9E}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84AFA599-CA52-4137-B287-4F2B12899CE2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{84AFA599-CA52-4137-B287-4F2B12899CE2}.Debug|Win32.Build.0 = Debug|Win32
+		{84AFA599-CA52-4137-B287-4F2B12899CE2}.Release|Win32.ActiveCfg = Release|Win32
+		{84AFA599-CA52-4137-B287-4F2B12899CE2}.Release|Win32.Build.0 = Release|Win32
+		{7C8DCB4B-1F99-4B79-A876-1C77D39E85AE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7C8DCB4B-1F99-4B79-A876-1C77D39E85AE}.Debug|Win32.Build.0 = Debug|Win32
+		{7C8DCB4B-1F99-4B79-A876-1C77D39E85AE}.Release|Win32.ActiveCfg = Release|Win32
+		{7C8DCB4B-1F99-4B79-A876-1C77D39E85AE}.Release|Win32.Build.0 = Release|Win32
+		{04517160-207A-496E-9DB4-EAF148921551}.Debug|Win32.ActiveCfg = Debug|Win32
+		{04517160-207A-496E-9DB4-EAF148921551}.Debug|Win32.Build.0 = Debug|Win32
+		{04517160-207A-496E-9DB4-EAF148921551}.Release|Win32.ActiveCfg = Release|Win32
+		{04517160-207A-496E-9DB4-EAF148921551}.Release|Win32.Build.0 = Release|Win32
+		{AE479507-702C-4FA1-8275-0FEBC9E50F9E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AE479507-702C-4FA1-8275-0FEBC9E50F9E}.Debug|Win32.Build.0 = Debug|Win32
+		{AE479507-702C-4FA1-8275-0FEBC9E50F9E}.Release|Win32.ActiveCfg = Release|Win32
+		{AE479507-702C-4FA1-8275-0FEBC9E50F9E}.Release|Win32.Build.0 = Release|Win32
+		{17F5441C-4CD2-45EB-B19E-07B5116755EE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{17F5441C-4CD2-45EB-B19E-07B5116755EE}.Debug|Win32.Build.0 = Debug|Win32
+		{17F5441C-4CD2-45EB-B19E-07B5116755EE}.Release|Win32.ActiveCfg = Release|Win32
+		{17F5441C-4CD2-45EB-B19E-07B5116755EE}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

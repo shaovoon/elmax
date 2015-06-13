@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{84AFA599-CA52-4137-B287-4F2B12899CE2}</ProjectGuid>
+    <RootNamespace>SequelMax_VS2013</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>SequelMax_VS2013</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\wong\Documents\boost_1_55_0\boost_1_55_0;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\wong\Documents\boost_1_55_0\boost_1_55_0;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_MICROSOFT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)D.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>_MICROSOFT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="config.h" />
+    <ClInclude Include="Configuration\Configuration.h" />
+    <ClInclude Include="Elmax\Attribute.h" />
+    <ClInclude Include="Elmax\Date.h" />
+    <ClInclude Include="Elmax\DateAndTime.h" />
+    <ClInclude Include="Elmax\Document.h" />
+    <ClInclude Include="Elmax\Element.h" />
+    <ClInclude Include="Elmax\istream.h" />
+    <ClInclude Include="Elmax\ostream.h" />
+    <ClInclude Include="Elmax\StringStack.h" />
+    <ClInclude Include="Elmax\XMLWriter.h" />
+    <ClInclude Include="Map\DictMap.h" />
+    <ClInclude Include="Map\SListMap.h" />
+    <ClInclude Include="Map\VectorMap.h" />
+    <ClInclude Include="RawElement\RawAttribute.h" />
+    <ClInclude Include="RawElement\RawElement.h" />
+    <ClInclude Include="RawElement\RawTreeNode.h" />
+    <ClInclude Include="SequelMax.h" />
+    <ClInclude Include="Utils\BoolHexUtil.h" />
+    <ClInclude Include="Utils\StrConv.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Elmax\Attribute.cpp" />
+    <ClCompile Include="Elmax\Date.cpp" />
+    <ClCompile Include="Elmax\DateAndTime.cpp" />
+    <ClCompile Include="Elmax\Document.cpp" />
+    <ClCompile Include="Elmax\Element.cpp" />
+    <ClCompile Include="Elmax\istream.cpp" />
+    <ClCompile Include="Elmax\ostream.cpp" />
+    <ClCompile Include="Elmax\StringStack.cpp" />
+    <ClCompile Include="Elmax\XMLWriter.cpp" />
+    <ClCompile Include="Map\DictMap.cpp" />
+    <ClCompile Include="Map\SListMap.cpp" />
+    <ClCompile Include="Map\VectorMap.cpp" />
+    <ClCompile Include="RawElement\RawAttribute.cpp" />
+    <ClCompile Include="RawElement\RawElement.cpp" />
+    <ClCompile Include="RawElement\RawTreeNode.cpp" />
+    <ClCompile Include="Utils\BoolHexUtil.cpp" />
+    <ClCompile Include="Utils\StrConv.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileIO\FileIO_VS2013.vcxproj">
+      <Project>{D0B0F8E7-BB36-4251-9254-1C5A2D667A69}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

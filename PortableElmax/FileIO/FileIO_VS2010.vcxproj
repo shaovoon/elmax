@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7C8DCB4B-1F99-4B79-A876-1C77D39E85AE}</ProjectGuid>
+    <RootNamespace>FileIO_VS2010</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\wong\Documents\boost_1_55_0\boost_1_55_0;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\wong\Documents\boost_1_55_0\boost_1_55_0;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_MICROSOFT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)D.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>_MICROSOFT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="ElmaxFile.h" />
+    <ClInclude Include="Common\Common.h" />
+    <ClInclude Include="Common\Enumeration.h" />
+    <ClInclude Include="Common\RAII_Array.h" />
+    <ClInclude Include="Microsoft\WinOperation.h" />
+    <ClInclude Include="Text\Reader\AsciiReader.h" />
+    <ClInclude Include="Text\Reader\AsciiReaderA.h" />
+    <ClInclude Include="Text\Reader\BaseTextReader.h" />
+    <ClInclude Include="Text\Reader\BaseTextReaderA.h" />
+    <ClInclude Include="Text\Reader\BEUnicodeReader.h" />
+    <ClInclude Include="Text\Reader\UnicodeReader.h" />
+    <ClInclude Include="Text\Reader\UTF8Reader.h" />
+    <ClInclude Include="Text\Reader\UTF8ReaderA.h" />
+    <ClInclude Include="Text\Reader\xTextReader.h" />
+    <ClInclude Include="Text\Reader\xTextReaderA.h" />
+    <ClInclude Include="Text\Utils\StrUtil.h" />
+    <ClInclude Include="Text\Utils\StrUtilA.h" />
+    <ClInclude Include="Text\Writer\AsciiWriter.h" />
+    <ClInclude Include="Text\Writer\AsciiWriterA.h" />
+    <ClInclude Include="Text\Writer\BaseTextWriter.h" />
+    <ClInclude Include="Text\Writer\BaseTextWriterA.h" />
+    <ClInclude Include="Text\Writer\BEUnicodeWriter.h" />
+    <ClInclude Include="Text\Writer\UnicodeWriter.h" />
+    <ClInclude Include="Text\Writer\UTF8Writer.h" />
+    <ClInclude Include="Text\Writer\UTF8WriterA.h" />
+    <ClInclude Include="Text\Writer\xTextWriter.h" />
+    <ClInclude Include="Text\Writer\xTextWriterA.h" />
+    <ClInclude Include="UTF8Utils\utf8.h" />
+    <ClInclude Include="UTF8Utils\utf8\checked.h" />
+    <ClInclude Include="UTF8Utils\utf8\core.h" />
+    <ClInclude Include="UTF8Utils\utf8\unchecked.h" />
+    <ClInclude Include="UTF16Utils\utf16.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Common\Common.cpp" />
+    <ClCompile Include="Common\Enumeration.cpp" />
+    <ClCompile Include="Common\RAII_Array.cpp" />
+    <ClCompile Include="Microsoft\WinOperation.cpp" />
+    <ClCompile Include="Text\Reader\AsciiReader.cpp" />
+    <ClCompile Include="Text\Reader\AsciiReaderA.cpp" />
+    <ClCompile Include="Text\Reader\BaseTextReader.cpp" />
+    <ClCompile Include="Text\Reader\BaseTextReaderA.cpp" />
+    <ClCompile Include="Text\Reader\BEUnicodeReader.cpp" />
+    <ClCompile Include="Text\Reader\UnicodeReader.cpp" />
+    <ClCompile Include="Text\Reader\UTF8Reader.cpp" />
+    <ClCompile Include="Text\Reader\UTF8ReaderA.cpp" />
+    <ClCompile Include="Text\Reader\xTextReader.cpp" />
+    <ClCompile Include="Text\Reader\xTextReaderA.cpp" />
+    <ClCompile Include="Text\Utils\StrUtil.cpp" />
+    <ClCompile Include="Text\Utils\StrUtilA.cpp" />
+    <ClCompile Include="Text\Writer\AsciiWriter.cpp" />
+    <ClCompile Include="Text\Writer\AsciiWriterA.cpp" />
+    <ClCompile Include="Text\Writer\BaseTextWriter.cpp" />
+    <ClCompile Include="Text\Writer\BaseTextWriterA.cpp" />
+    <ClCompile Include="Text\Writer\BEUnicodeWriter.cpp" />
+    <ClCompile Include="Text\Writer\UnicodeWriter.cpp" />
+    <ClCompile Include="Text\Writer\UTF8Writer.cpp" />
+    <ClCompile Include="Text\Writer\UTF8WriterA.cpp" />
+    <ClCompile Include="Text\Writer\xTextWriter.cpp" />
+    <ClCompile Include="Text\Writer\xTextWriterA.cpp" />
+    <ClCompile Include="UTF16Utils\utf16.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

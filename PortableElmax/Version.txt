@@ -1,0 +1,15 @@
+Version 0.9.4 Beta
++ Removed the Attribute class
+
+Version 0.9.3 Beta
++ Includes the SAX version.
++ Fixed the Linux Unicode compilation error.
+
+Version 0.9.2 Beta
++ Fixed the MFC CString errors with the 2 new unit tests.
+
+Version 0.9.1 Beta
++ Removed the 4 modes of operation.
+
+Version 0.9.0 Beta
++ Feature complete.
