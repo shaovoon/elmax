@@ -107,44 +107,16 @@ RawElement RawElement::Find(const TSTR& names)
 	{
 		bMultipleParent = true;
 	}
-	#ifndef ELMAX_DISABLE_FORWARD_BACKWARD_SEPARATOR
-		size = temp.FindOneOf(_TS("\\"));
-		if(size!=-1)
-		{
-			bMultipleParent = true;
-		}
-		size = temp.FindOneOf(_TS("/"));
-		if(size!=-1)
-		{
-			bMultipleParent = true;
-		}
-	#endif
 #else
 	size_t size = temp.find_first_of(_TS('|'));
 	if(size!=STDSTR::npos)
 	{
 		bMultipleParent = true;
 	}
-	#ifndef ELMAX_DISABLE_FORWARD_BACKWARD_SEPARATOR
-		size = temp.find_first_of(_TS('\\'));
-		if(size!=STDSTR::npos)
-		{
-			bMultipleParent = true;
-		}
-		size = temp.find_first_of(_TS('/'));
-		if(size!=STDSTR::npos)
-		{
-			bMultipleParent = true;
-		}
-	#endif
 #endif
 	if(bMultipleParent)
 	{
-#ifdef ELMAX_DISABLE_FORWARD_BACKWARD_SEPARATOR
 		_ELCHAR seps[]   = _TS("|");
-#else
-		_ELCHAR seps[]   = _TS("|/\\");
-#endif
 		_ELCHAR *token = NULL;
 		_ELCHAR *next_token = NULL;
 

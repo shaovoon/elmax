@@ -435,7 +435,7 @@ namespace UnitTestElmax
 			root2.Destroy();
 		}
 		
-		TEST_METHOD(TestDelimiter1)
+		TEST_METHOD(TestDelimiter)
 		{
 			using namespace Elmax;
 			Element root(_TS("aa"));
@@ -461,60 +461,6 @@ namespace UnitTestElmax
 			root.Destroy();
 			root2.Destroy();
 		}
-#ifndef ELMAX_DISABLE_FORWARD_BACKWARD_SEPARATOR
-		TEST_METHOD(TestDelimiter2)
-		{
-			using namespace Elmax;
-			Element root(_TS("aa"));
-
-			Element elem = root[_TS("bb\\cc")].CreateNew();
-			ELMAX_INT64 dd = 14000000000L;
-			Assert::IsTrue(elem.Exists());
-			elem[_TS("dd")].SetInt64(dd);
-
-			TSTR file = GetFolderPath() + _TS("TestDelimiter2.xml");
-			root.Save(file, FT_UTF8);
-
-			Element root2;
-			root2.Open(file);
-			//root2.Save(GetFolderPath() + _TS("TestDelimiter2Check.xml"), FT_UTF8);
-
-			Element elem2 = root2[_TS("bb\\cc")];
-			Assert::IsTrue(elem2.Exists());
-
-			ELMAX_INT64 dd2 = elem2[_TS("dd")].GetInt64(10);
-
-			Assert::IsTrue(dd == dd2);
-			root.Destroy();
-			root2.Destroy();
-		}
-		TEST_METHOD(TestDelimiter3)
-		{
-			using namespace Elmax;
-			Element root(_TS("aa"));
-
-			Element elem = root[_TS("bb/cc")].CreateNew();
-			ELMAX_INT64 dd = 14000000000L;
-			Assert::IsTrue(elem.Exists());
-			elem[_TS("dd")].SetInt64(dd);
-
-			TSTR file = GetFolderPath() + _TS("TestDelimiter3.xml");
-			root.Save(file, FT_UTF8);
-
-			Element root2;
-			root2.Open(file);
-			//root2.Save(GetFolderPath() + _TS("TestDelimiter3Check.xml"), FT_UTF8);
-
-			Element elem2 = root2[_TS("bb/cc")];
-			Assert::IsTrue(elem2.Exists());
-
-			ELMAX_INT64 dd2 = elem2[_TS("dd")].GetInt64(10);
-
-			Assert::IsTrue(dd == dd2);
-			root.Destroy();
-			root2.Destroy();
-		}
-#endif
 		TEST_METHOD(EmptyAsCollection)
 		{
 			using namespace Elmax;
