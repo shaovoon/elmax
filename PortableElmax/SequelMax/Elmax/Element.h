@@ -7,7 +7,6 @@
 #include <algorithm>
 
 #include "../Configuration/Configuration.h"
-#include "Attribute.h"
 #include "Date.h"
 #include "DateAndTime.h"
 #include "../RawElement/RawElement.h"
@@ -45,12 +44,8 @@ public:
 
 	ATTR_MAP_COLLECTION* GetAttributeCollection();
 
-	//! Get the attribute with this attrName
-	SequelMax::Attribute Attr(const TSTR& attrName);
 	//! Get a list of attribute names.
 	std::vector<TSTR> GetAttrNames();
-	//! Get a list of attributes.
-	std::vector<SequelMax::Attribute> GetAllAttr();
 
 	// Getters
 	operator char () const;
@@ -85,6 +80,24 @@ public:
 	SequelMax::DateAndTime GetDateTime(const SequelMax::DateAndTime& defaultVal) const;
 	unsigned int ReadHex(unsigned int defaultVal) const;
 
+	// Attribute getters
+	bool GetAttrBool(const TSTR& name, bool defaultVal) const;
+	char GetAttrChar(const TSTR& name, char defaultVal) const;
+	short GetAttrInt16(const TSTR& name, short defaultVal) const;
+	int GetAttrInt32(const TSTR& name, int defaultVal) const;
+	ELMAX_INT64 GetAttrInt64(const TSTR& name, ELMAX_INT64 defaultVal) const;
+	unsigned char GetAttrUChar(const TSTR& name, unsigned char defaultVal) const;
+	unsigned short GetAttrUInt16(const TSTR& name, unsigned short defaultVal) const;
+	unsigned int GetAttrUInt32(const TSTR& name, unsigned int defaultVal) const;
+	unsigned ELMAX_INT64 GetAttrUInt64(const TSTR& name, unsigned ELMAX_INT64 defaultVal) const;
+	float GetAttrFloat(const TSTR& name, float defaultVal) const;
+	double GetAttrDouble(const TSTR& name, double defaultVal) const;
+	TSTR GetAttrString(const TSTR& name, const TSTR& defaultVal) const;
+	SequelMax::Date GetAttrDate(const TSTR& name, const SequelMax::Date& defaultVal) const;
+	SequelMax::DateAndTime GetAttrDateTime(const TSTR& name, const SequelMax::DateAndTime& defaultVal) const;
+	unsigned int ReadAttrHex(const TSTR& name, unsigned int defaultVal) const;
+
+
 private:
 	//! Split the str(ing) with delimiter "|/\\" into vec
 	//!
@@ -100,6 +113,8 @@ private:
 	// Create namespace attribute, eg xmlns="...", or xmlns:book="..."
 	void CreateNamespaceAttr(const TSTR& elemName, const TSTR& namespaceUri);
 
+	bool GetAttrString(const TSTR& name, const TSTR& defaultVal, TSTR& val) const;
+	bool GetAttributeAt(const TSTR& wstrName, TSTR& wstrValue, bool& bExists) const;
 
 protected:
 	RawElement* m_pRawElement;

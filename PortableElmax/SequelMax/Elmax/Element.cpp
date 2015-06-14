@@ -668,15 +668,394 @@ unsigned int Element::ReadHex(unsigned int defaultVal) const
 	return val;
 }
 
-SequelMax::Attribute Element::Attr(const TSTR& attrName)
+bool Element::GetAttrString(const TSTR& name, const TSTR& defaultVal, TSTR& val) const
 {
-	if(!m_pRawElement)
-		return SequelMax::Attribute();
+	if (!m_pRawElement)
+		throw std::runtime_error("Invalid element!");
 
-	Attribute attr;
+	TSTR strValue;
+	bool bExists = false;
+	GetAttributeAt(name, strValue, bExists);
+	if (false == bExists || IS_EMPTY(strValue))
+	{
+		val = defaultVal;
+		return false;
+	}
 
-	attr.SetParam(m_pRawElement, attrName);
-	return attr;
+	val = strValue;
+
+	return true;
+}
+
+bool Element::GetAttrBool(const TSTR& name, bool defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	bool val = defaultVal;
+	BoolHexUtil::GetBool(src, defaultVal, val);
+	return val;
+}
+
+char Element::GetAttrChar(const TSTR& name, char defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	char val = defaultVal;
+	try
+	{
+#if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<char>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<char>(GET_CONST_PTR(src));
+#endif
+#else
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<char>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<char>(src);
+#endif
+#endif
+	}
+	catch (boost::bad_lexical_cast &)
+	{
+		val = defaultVal;
+	}
+	return val;
+}
+
+short Element::GetAttrInt16(const TSTR& name, short defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	short val = defaultVal;
+	try
+	{
+#if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<short>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<short>(GET_CONST_PTR(src));
+#endif
+#else
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<short>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<short>(src);
+#endif
+#endif
+	}
+	catch (boost::bad_lexical_cast &)
+	{
+		val = defaultVal;
+	}
+	return val;
+}
+
+int Element::GetAttrInt32(const TSTR& name, int defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	int val = defaultVal;
+	try
+	{
+#if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<int>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<int>(GET_CONST_PTR(src));
+#endif
+#else
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<int>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<int>(src);
+#endif
+#endif
+	}
+	catch (boost::bad_lexical_cast &)
+	{
+		val = defaultVal;
+	}
+	return val;
+}
+
+ELMAX_INT64 Element::GetAttrInt64(const TSTR& name, ELMAX_INT64 defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	ELMAX_INT64 val = defaultVal;
+	try
+	{
+#if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<ELMAX_INT64>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<ELMAX_INT64>(GET_CONST_PTR(src));
+#endif
+#else
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<ELMAX_INT64>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<ELMAX_INT64>(src);
+#endif
+#endif
+	}
+	catch (boost::bad_lexical_cast &)
+	{
+		val = defaultVal;
+	}
+	return val;
+}
+
+unsigned char Element::GetAttrUChar(const TSTR& name, unsigned char defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	unsigned char val = defaultVal;
+	try
+	{
+#if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<unsigned char>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<unsigned char>(GET_CONST_PTR(src));
+#endif
+#else
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<unsigned char>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<unsigned char>(src);
+#endif
+#endif
+	}
+	catch (boost::bad_lexical_cast &)
+	{
+		val = defaultVal;
+	}
+	return val;
+}
+
+unsigned short Element::GetAttrUInt16(const TSTR& name, unsigned short defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	unsigned short val = defaultVal;
+	try
+	{
+#if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<unsigned short>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<unsigned short>(GET_CONST_PTR(src));
+#endif
+#else
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<unsigned short>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<unsigned short>(src);
+#endif
+#endif
+	}
+	catch (boost::bad_lexical_cast &)
+	{
+		val = defaultVal;
+	}
+	return val;
+}
+
+unsigned int Element::GetAttrUInt32(const TSTR& name, unsigned int defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	unsigned int val = defaultVal;
+	try
+	{
+#if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<unsigned int>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<unsigned int>(GET_CONST_PTR(src));
+#endif
+#else
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<unsigned int>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<unsigned int>(src);
+#endif
+#endif
+	}
+	catch (boost::bad_lexical_cast &)
+	{
+		val = defaultVal;
+	}
+	return val;
+}
+
+unsigned ELMAX_INT64 Element::GetAttrUInt64(const TSTR& name, unsigned ELMAX_INT64 defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	unsigned ELMAX_INT64 val = defaultVal;
+	try
+	{
+#if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<unsigned ELMAX_INT64>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<unsigned ELMAX_INT64>(GET_CONST_PTR(src));
+#endif
+#else
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<unsigned ELMAX_INT64>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<unsigned ELMAX_INT64>(src);
+#endif
+#endif
+	}
+	catch (boost::bad_lexical_cast &)
+	{
+		val = defaultVal;
+	}
+	return val;
+}
+
+float Element::GetAttrFloat(const TSTR& name, float defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	float val = defaultVal;
+	try
+	{
+#if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<float>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<float>(GET_CONST_PTR(src));
+#endif
+#else
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<float>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<float>(src);
+#endif
+#endif
+	}
+	catch (boost::bad_lexical_cast &)
+	{
+		val = defaultVal;
+	}
+	return val;
+}
+
+double Element::GetAttrDouble(const TSTR& name, double defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	double val = defaultVal;
+	try
+	{
+#if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<double>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<double>(GET_CONST_PTR(src));
+#endif
+#else
+#ifdef ELMAX_USE_UNICODE
+		val = boost::lexical_cast<double>(StrConv::ConvToAString(src));
+#else
+		val = boost::lexical_cast<double>(src);
+#endif
+#endif
+	}
+	catch (boost::bad_lexical_cast &)
+	{
+		val = defaultVal;
+	}
+	return val;
+}
+
+TSTR Element::GetAttrString(const TSTR& name, const TSTR& defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	TSTR val = defaultVal;
+	if (IS_EMPTY(src) == false)
+		val = src;
+
+	return val;
+}
+
+SequelMax::Date Element::GetAttrDate(const TSTR& name, const SequelMax::Date& defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	SequelMax::Date val;
+	try
+	{
+		val.SetString(src);
+	}
+	catch (...)
+	{
+		return defaultVal;
+	}
+	return val;
+}
+
+SequelMax::DateAndTime Element::GetAttrDateTime(const TSTR& name, const SequelMax::DateAndTime& defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	SequelMax::DateAndTime val;
+	try
+	{
+		val.SetString(src);
+	}
+	catch (...)
+	{
+		return defaultVal;
+	}
+	return val;
+}
+
+unsigned int Element::ReadAttrHex(const TSTR& name, unsigned int defaultVal) const
+{
+	TSTR src;
+	if (false == GetAttrString(name, _TS(""), src))
+		return defaultVal;
+
+	unsigned int val = defaultVal;
+	BoolHexUtil::ReadHex(src, defaultVal, val);
+	return val;
 }
 
 std::vector<TSTR> Element::GetAttrNames()
@@ -700,26 +1079,30 @@ std::vector<TSTR> Element::GetAttrNames()
 	return vec;
 }
 
-std::vector<SequelMax::Attribute> Element::GetAllAttr()
+bool Element::GetAttributeAt(const TSTR& name, TSTR& val, bool& bExists) const
 {
-	std::vector<SequelMax::Attribute> vec;
-
-	if(!m_pRawElement)
-		return vec;
-
-	if(m_pRawElement&&m_pRawElement->GetAttrCount()>0)
+	bExists = false;
+	if (m_pRawElement)
 	{
-		ATTR_MAP* attrList = m_pRawElement->GetAttrs();
+		ATTR_MAP* attrmap = m_pRawElement->GetAttrs();
 
-		for(size_t i=0; i<attrList->Count(); ++i)
+		if (attrmap)
 		{
-			SequelMax::Attribute attr;
-			attr.SetParam(m_pRawElement, attrList->At(i).first); // TODO: set name
-			vec.push_back(attr);
+			for (size_t i = 0; i < attrmap->Count(); ++i)
+			{
+				std::pair<TSTR, TSTR> pair = attrmap->At(i);
+				if (pair.first == name)
+				{
+					val = pair.second;
+					bExists = true;
+
+					return true;
+				}
+			}
 		}
 	}
 
-	return vec;
+	return false;
 }
 
 void Element::Destroy()

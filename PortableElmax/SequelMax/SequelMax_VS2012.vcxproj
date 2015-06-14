@@ -82,7 +82,6 @@
   <ItemGroup>
     <ClInclude Include="config.h" />
     <ClInclude Include="Configuration\Configuration.h" />
-    <ClInclude Include="Elmax\Attribute.h" />
     <ClInclude Include="Elmax\Date.h" />
     <ClInclude Include="Elmax\DateAndTime.h" />
     <ClInclude Include="Elmax\Document.h" />
@@ -102,7 +101,6 @@
     <ClInclude Include="Utils\StrConv.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Elmax\Attribute.cpp" />
     <ClCompile Include="Elmax\Date.cpp" />
     <ClCompile Include="Elmax\DateAndTime.cpp" />
     <ClCompile Include="Elmax\Document.cpp" />

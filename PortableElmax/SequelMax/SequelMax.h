@@ -32,7 +32,6 @@
 #	endif
 #endif
 
-#include "Elmax/Attribute.h"
 #include "Elmax/Element.h"
 #include "Elmax/Document.h"
 #include "Elmax/XMLWriter.h"

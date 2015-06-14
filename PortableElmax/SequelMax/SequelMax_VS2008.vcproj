@@ -181,14 +181,6 @@
 			Name="Elmax"
 			>
 			<File
-				RelativePath=".\Elmax\Attribute.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Elmax\Attribute.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Elmax\Date.cpp"
 				>
 			</File>

@@ -43,8 +43,8 @@ void ReadComment(const TSTR& text, std::vector<Employee>& vec);
 void ReadEmployee(SequelMax::Element& elem, std::vector<Employee>& vec)
 {
 	Employee emp;
-	emp.EmployeeID = elem.Attr(_TS("EmployeeID"));
-	emp.SupervisorID = elem.Attr(_TS("SupervisorID"));
+	emp.EmployeeID = elem.GetAttrInt32(_TS("EmployeeID"), 0);
+	emp.SupervisorID = elem.GetAttrInt32(_TS("SupervisorID"), 0);
 	vec.push_back(emp);
 }
 void ReadName(const TSTR& text, std::vector<Employee>& vec)
@@ -89,8 +89,8 @@ bool ReadDoc(const TSTR& file, std::vector<Employee>& vec)
 
 	doc.RegisterStartElementFunctor(_TS("Employees|Employee"), [&vec](Element& elem)->void {
 		Employee emp;
-		emp.EmployeeID = elem.Attr(_TS("EmployeeID"));
-		emp.SupervisorID = elem.Attr(_TS("SupervisorID"));
+		emp.EmployeeID = elem.GetAttrInt32(_TS("EmployeeID"), 0);
+		emp.SupervisorID = elem.GetAttrInt32(_TS("SupervisorID"), 0);
 		vec.push_back(emp);
 	});
 	doc.RegisterEndElementFunctor(_TS("Employees|Employee|Name"), [&vec](const TSTR& text)->void {
