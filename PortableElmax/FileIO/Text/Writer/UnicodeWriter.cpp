@@ -69,7 +69,7 @@ bool UnicodeWriter::Write( const std::wstring& text )
 		BOMWritten = true;
 	}
 
-	return Write( text.c_str() );
+	return Write(text.c_str(), text.length());
 }
 
 bool UnicodeWriter::WriteLine( const std::wstring& text )

@@ -70,7 +70,7 @@ bool BEUnicodeWriter::Write( const std::wstring& text )
 		BOMWritten = true;
 	}
 
-	bool ret = Write( text.c_str() );
+	bool ret = Write(text.c_str(), text.length());
 	if(ret==false)
 	{
 		errNum = ELMAX_WRITE_ERROR;
