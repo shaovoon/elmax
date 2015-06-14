@@ -55,13 +55,9 @@ void ReadAttr(const std::string& xml)
 
 	Element elem = root["Product"];
 
-	int qty=0;
-	if(elem.Exists())
-		qty = elem.GetAttrInt32("Qty", 0);
+	int qty=elem.GetAttrInt32("Qty", 0);
 
 	std::cout << "Qty:" << qty << std::endl;
-
-	
 }
 
 void WriteComment(std::string& xml)
@@ -76,8 +72,6 @@ void WriteComment(std::string& xml)
 	xml = root.ToPrettyString("    ");
 
 	std::cout << xml << std::endl;
-
-	
 }
 
 void ReadComment(const std::string& xml)
@@ -88,9 +82,7 @@ void ReadComment(const std::string& xml)
 
 	Element elem = root["Product"];
 
-	int qty=0;
-	if(elem.Exists())
-		qty = elem.GetAttrInt32("Qty", 0);
+	int qty=elem.GetAttrInt32("Qty", 0);
 
 	std::vector<Comment> vec = elem.GetCommentCollection();
 
@@ -98,8 +90,6 @@ void ReadComment(const std::string& xml)
 
 	if(vec.size()>0)
 		std::cout << "Comment:" << vec[0].GetContent() << std::endl;
-
-	
 }
 
 void WriteCData(std::string& xml)
@@ -114,8 +104,6 @@ void WriteCData(std::string& xml)
 	xml = root.ToPrettyString("    ");
 
 	std::cout << xml << std::endl;
-
-	
 }
 
 void ReadCData(const std::string& xml)
@@ -126,9 +114,7 @@ void ReadCData(const std::string& xml)
 
 	Element elem = root["Product"];
 
-	int qty=0;
-	if(elem.Exists())
-		qty = elem.GetAttrInt32("Qty", 0);
+	int qty = elem.GetAttrInt32("Qty", 0);
 
 	std::vector<CData> vec = elem.GetCDataCollection();
 
@@ -136,8 +122,6 @@ void ReadCData(const std::string& xml)
 
 	if(vec.size()>0)
 		std::cout << "CData:" << vec[0].GetContent() << std::endl;
-
-	
 }
 
 void NamespaceUri()
@@ -151,8 +135,6 @@ void NamespaceUri()
 	string xml = root.ToPrettyString("    ");
 
 	std::cout << xml << std::endl;
-
-	
 }
 
 void AsCollection()
@@ -179,8 +161,6 @@ void AsCollection()
 	{
 		cout << vec[i].GetString("") << ":" << vec[i].GetAttrInt32("Qty", 0) << std::endl;
 	}
-
-	
 }
 
 void AsCollectionLambda()
@@ -210,8 +190,6 @@ void AsCollectionLambda()
 	{
 		cout << vec[i].GetString("") << ":" << vec[i].GetAttrInt32("Qty", 0) << std::endl;
 	}
-
-	
 }
 
 void Iterators()
@@ -238,8 +216,6 @@ void Iterators()
 	{
 		cout << (*it).GetString("") << ":" << (*it).GetAttrInt32("Qty", 0) << std::endl;
 	}
-
-	
 }
 
 void CppLinq()
@@ -297,8 +273,6 @@ void CppLinq()
 	{
 		std::cout << result[i].title << " is written by " << result[i].author << std::endl;
 	}
-	
-	
 }
 
 int _tmain(int argc, _TCHAR* argv[])

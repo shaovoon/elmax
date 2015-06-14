@@ -47,68 +47,6 @@ void Element::SetNode(RawElement* ptrElement)
 	m_pRawElement = ptrElement;
 }
 
-bool Element::SplitString(const TSTR& str, std::vector<TSTR>& vec, bool& bMultipleParent)
-{
-	vec.clear();
-	bMultipleParent = false;
-
-	TSTR temp = str;
-#if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
-	int size = temp.FindOneOf(_TS("|"));
-	if(size!=-1)
-	{
-		bMultipleParent = true;
-	}
-#else
-	size_t size = temp.find_first_of(_TS('|'));
-	if(size!=STDSTR::npos)
-	{
-		bMultipleParent = true;
-	}
-#endif
-	if(bMultipleParent)
-	{
-		_ELCHAR seps[]   = _TS("|");
-		_ELCHAR *token = NULL;
-		_ELCHAR *next_token = NULL;
-
-		const size_t arrSize = GET_SIZE(temp)+1;
-		_ELCHAR *p = new _ELCHAR[arrSize];
-		RAII_Array<_ELCHAR> raii = p;
-		memset(p, 0, arrSize * sizeof(_ELCHAR));
-		STRCPY(p, GET_CONST_PTR(temp), arrSize);
-#ifdef _MICROSOFT
-		token = STRTOK_S(p, seps, &next_token );
-#else
-	#ifdef _WIN32
-		token = STRTOK(p, seps);
-	#else
-		token = STRTOK_R(p, seps, &next_token);
-	#endif
-#endif
-		while( token != NULL )
-		{
-			vec.push_back(TSTR(token));
-			// Get next token
-#ifdef _MICROSOFT
-			token = STRTOK_S( NULL, seps, &next_token );
-#else
-	#ifdef _WIN32
-			token = STRTOK( NULL, seps );
-	#else
-			token = STRTOK_R( NULL, seps, &next_token );
-	#endif
-#endif
-		}
-		//delete [] p;
-	}
-
-	if(vec.empty()&&IS_EMPTY(str)==false)
-		vec.push_back(str);
-
-	return true;
-}
-
 bool Element::SplitNamespace(const TSTR& src, TSTR& wstrName, TSTR& wstrNamespace)
 {
 	wstrName = src;

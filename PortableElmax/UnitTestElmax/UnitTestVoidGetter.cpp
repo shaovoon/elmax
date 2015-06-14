@@ -26,7 +26,6 @@ namespace UnitTestElmax
 			Assert::AreEqual(dd.GetHour(), dd3.GetHour());
 			Assert::AreEqual(dd.GetMinute(), dd3.GetMinute());
 			Assert::AreEqual(dd.GetSecond(), dd3.GetSecond());
-			
 		}
 		TEST_METHOD(GetVoidDate)
 		{
@@ -41,7 +40,6 @@ namespace UnitTestElmax
 			Assert::AreEqual(dd.GetYear(), dd3.GetYear());
 			Assert::AreEqual(dd.GetMonth(), dd3.GetMonth());
 			Assert::AreEqual(dd.GetMonthDay(), dd3.GetMonthDay());
-			
 		}
 		TEST_METHOD(GetVoidBoolean)
 		{
@@ -55,7 +53,6 @@ namespace UnitTestElmax
 			bool dd2 = elem.GetBool(false);
 
 			Assert::AreEqual(dd, dd2);
-			
 		}
 		TEST_METHOD(GetVoidInt64)
 		{
@@ -69,7 +66,6 @@ namespace UnitTestElmax
 			ELMAX_INT64 dd2 = elem.GetInt64(dd);
 
 			Assert::IsTrue(dd == dd2);
-			
 		}
 		TEST_METHOD(GetVoidInt)
 		{
@@ -83,7 +79,6 @@ namespace UnitTestElmax
 			int dd2 = elem.GetInt32(dd);
 
 			Assert::AreEqual(dd, dd2);
-			
 		}
 		TEST_METHOD(GetVoidShort)
 		{
@@ -97,7 +92,6 @@ namespace UnitTestElmax
 			short dd2 = elem.GetInt16(dd);
 
 			Assert::AreEqual(dd, dd2);
-			
 		}
 		TEST_METHOD(GetVoidChar)
 		{
@@ -111,7 +105,6 @@ namespace UnitTestElmax
 			char dd2 = elem.GetChar(dd);
 
 			Assert::AreEqual(dd, dd2);
-			
 		}
 		TEST_METHOD(GetVoidUInt64)
 		{
@@ -125,7 +118,6 @@ namespace UnitTestElmax
 			unsigned ELMAX_INT64 dd2 = elem.GetUInt64(dd);
 
 			Assert::AreEqual(dd, dd2);
-			
 		}
 		TEST_METHOD(GetVoidUInt)
 		{
@@ -139,7 +131,6 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem.GetUInt32(dd);
 
 			Assert::AreEqual(dd, dd2);
-			
 		}
 		TEST_METHOD(GetVoidUShort)
 		{
@@ -153,7 +144,6 @@ namespace UnitTestElmax
 			unsigned short dd2 = elem.GetUInt16(dd);
 
 			Assert::IsTrue(dd == dd2);
-			
 		}
 		TEST_METHOD(GetVoidUChar)
 		{
@@ -167,7 +157,6 @@ namespace UnitTestElmax
 			unsigned char dd2 = elem.GetUChar(dd);
 
 			Assert::AreEqual(dd, dd2);
-			
 		}
 		TEST_METHOD(GetVoidWString)
 		{
@@ -181,7 +170,6 @@ namespace UnitTestElmax
 			TSTR dd2 = elem.GetString(dd);
 
 			Assert::IsTrue(dd == dd2);
-			
 		}
 		TEST_METHOD(GetVoidDouble)
 		{
@@ -195,7 +183,6 @@ namespace UnitTestElmax
 			double dd2 = elem.GetDouble(dd);
 
 			Assert::AreEqual(dd, dd2);
-			
 		}
 		TEST_METHOD(GetVoidFloat)
 		{
@@ -209,7 +196,6 @@ namespace UnitTestElmax
 			float dd2 = elem.GetFloat(dd);
 
 			Assert::AreEqual(dd, dd2);
-			
 		}
 		TEST_METHOD(GetVoidHex)
 		{
@@ -222,7 +208,6 @@ namespace UnitTestElmax
 			unsigned int ans = elem.ReadHex(0xee);
 
 			Assert::AreEqual((unsigned int)(0xee), ans);
-			
 		}
 	};
 }

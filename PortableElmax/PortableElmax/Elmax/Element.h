@@ -422,18 +422,10 @@ namespace Elmax
 
 
 	private:
-		//! Split the str(ing) with delimiter "|/\\" into vec
-		//!
-		//! @param bMultipleParent returns true if there are more than 1 item in vec
-		static bool SplitString(const TSTR& str, std::vector<TSTR>& vec, bool& bMultipleParent);
 		//! Get Element with this str name
 		Element GetNodeAt(const TSTR& str) const;
 		//! Split the src with delimiter ":" into wstrNamespace and wstrName
 		static bool SplitNamespace(const TSTR& src, TSTR& wstrName, TSTR& wstrNamespace);
-		//! Get the attribute value
-		//!
-		//! @param defaultVal is the default string value to use if src is invalid or empty
-		//! @param val is the string value to be returned
 		bool GetString(const TSTR& defaultVal, TSTR& val) const;
 		void SetEncoding(std::map<TSTR, TSTR>& prep, FILE_TYPE fileType);
 
@@ -442,10 +434,6 @@ namespace Elmax
 
 	protected:
 		RawElement* m_pRawElement;
-
-	public:
-		static Element NullValue;
-
 	};
 
 	class RootElement : public Element

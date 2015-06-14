@@ -114,8 +114,6 @@ namespace UnitTestElmax
 
 			Assert::AreEqual(acmap2[_TS("cc")], (unsigned int)(3));
 			Assert::AreEqual(acmap2[_TS("qq")], (unsigned int)(2));
-			
-			
 		}
 		TEST_METHOD(QueryChildrenNum2)
 		{
@@ -152,8 +150,6 @@ namespace UnitTestElmax
 
 			Assert::AreEqual(acmap2[_TS("cc")], (unsigned int)(3));
 			Assert::AreEqual(acmap2[_TS("qq")], (unsigned int)(2));
-			
-			
 		}
 		TEST_METHOD(AsCollection1)
 		{
@@ -192,8 +188,6 @@ namespace UnitTestElmax
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
 			}
-			
-			
 		}
 		TEST_METHOD(AsCollection2)
 		{
@@ -232,8 +226,6 @@ namespace UnitTestElmax
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
 			}
-			
-			
 		}
 		TEST_METHOD(AsCollectionPred)
 		{
@@ -273,8 +265,6 @@ namespace UnitTestElmax
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
 			}
-			
-			
 		}
 		TEST_METHOD(GetChildren1)
 		{
@@ -313,8 +303,6 @@ namespace UnitTestElmax
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
 			}
-			
-			
 		}
 		TEST_METHOD(GetChildren2)
 		{
@@ -353,8 +341,6 @@ namespace UnitTestElmax
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
 			}
-			
-			
 		}
 		TEST_METHOD(GetChildrenPred)
 		{
@@ -394,8 +380,6 @@ namespace UnitTestElmax
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
 			}
-			
-			
 		}
 		TEST_METHOD(CountPred)
 		{
@@ -416,7 +400,6 @@ namespace UnitTestElmax
 			unsigned int cnt = root[_TS("bb")].Count(_TS("cc"),  pred);
 
 			Assert::AreEqual((unsigned int)(2), cnt);
-			
 		}
 		TEST_METHOD(DetachAndAddNode)
 		{
@@ -458,8 +441,6 @@ namespace UnitTestElmax
 
 			dd2 = elem2[_TS("dd")].GetInt32(10);
 			Assert::AreEqual(10, dd2);
-			
-			
 		}
 		TEST_METHOD(RemoveNode)
 		{
@@ -488,8 +469,6 @@ namespace UnitTestElmax
 
 			dd2 = elem2.GetInt32(10);
 			Assert::AreEqual(10, dd2);
-			
-			
 		}
 		TEST_METHOD(TestDelimiter)
 		{
@@ -515,8 +494,6 @@ namespace UnitTestElmax
 			ELMAX_INT64 dd2 = elem2.GetInt64(10);
 
 			Assert::IsTrue(dd == dd2);
-			
-			
 		}
 		TEST_METHOD(EmptyAsCollection)
 		{
@@ -558,8 +535,6 @@ namespace UnitTestElmax
 			{
 				bExceptionThrown = true;
 			}
-			
-			
 		}
 		TEST_METHOD(EmptyGetChildren)
 		{
@@ -584,8 +559,6 @@ namespace UnitTestElmax
 			Element::collection_t vec2 = root2[_TS("bb")].GetChildren(_TS("cc"));
 
 			Assert::AreEqual((size_t)(0), vec2.size());
-			
-			
 		}
 		TEST_METHOD(EmptyQueryChildrenNum)
 		{
@@ -609,8 +582,6 @@ namespace UnitTestElmax
 			Element::available_child_t acmap2 = root2[_TS("aa")].QueryChildrenNum();
 
 			Assert::AreEqual((size_t)(0), acmap2.size());
-			
-			
 		}
 		TEST_METHOD(InvalidElementGetChildren)
 		{
@@ -653,8 +624,6 @@ namespace UnitTestElmax
 				bExceptionThrown = true;
 			}
 			Assert::IsTrue(bExceptionThrown);
-			
-			
 		}
 		TEST_METHOD(InvalidElementQueryChildrenNum)
 		{
@@ -696,8 +665,6 @@ namespace UnitTestElmax
 				bExceptionThrown = true;
 			}
 			Assert::IsTrue(bExceptionThrown);
-			
-			
 		}
 		TEST_METHOD(Sort)
 		{
@@ -719,7 +686,6 @@ namespace UnitTestElmax
 			Assert::AreEqual(list[0].GetDouble(0), 11.0);
 			Assert::AreEqual(list[1].GetDouble(0), 22.0);
 			Assert::AreEqual(list[2].GetDouble(0), 33.0);
-			
 		}
 
 		TEST_METHOD(Iterator1)
@@ -770,8 +736,6 @@ namespace UnitTestElmax
 				sum += (*it2).GetInt32(10);
 			}
 			Assert::AreEqual((size_t)(66), sum);
-			
-			
 		}
 
 		TEST_METHOD(Iterator2)
@@ -822,8 +786,6 @@ namespace UnitTestElmax
 				sum += (*it2).GetInt32(10);
 			}
 			Assert::AreEqual((size_t)(110), sum);
-			
-			
 		}
 		TEST_METHOD(SaveToString)
 		{
@@ -873,8 +835,6 @@ namespace UnitTestElmax
 				sum += (*it2).GetInt32(10);
 			}
 			Assert::AreEqual((size_t)(110), sum);
-			
-			
 		}
 
 		TEST_METHOD(SaveToPrettyString)
@@ -925,8 +885,6 @@ namespace UnitTestElmax
 				sum += (*it2).GetInt32(10);
 			}
 			Assert::AreEqual((size_t)(110), sum);
-			
-			
 		}
 		static void executeTests()
 		{

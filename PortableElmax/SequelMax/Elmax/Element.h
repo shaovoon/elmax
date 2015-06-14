@@ -99,10 +99,6 @@ public:
 
 
 private:
-	//! Split the str(ing) with delimiter "|/\\" into vec
-	//!
-	//! @param bMultipleParent returns true if there are more than 1 item in vec
-	static bool SplitString(const TSTR& str, std::vector<TSTR>& vec, bool& bMultipleParent);
 	//! Split the src with delimiter ":" into wstrNamespace and wstrName
 	static bool SplitNamespace(const TSTR& src, TSTR& wstrName, TSTR& wstrNamespace);
 	//! Get the attribute value

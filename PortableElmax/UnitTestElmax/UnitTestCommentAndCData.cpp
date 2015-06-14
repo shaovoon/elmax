@@ -43,8 +43,6 @@ namespace UnitTestElmax
 			Comment comment2 = elem2.GetCommentCollection().at(0);
 
 			Assert::IsTrue(strComment == comment2.GetContent());
-			
-			
 		}
 		TEST_METHOD(SaveReadCData)
 		{
@@ -72,8 +70,6 @@ namespace UnitTestElmax
 			CData cdata2 = elem2.GetCDataCollection().at(0);
 
 			Assert::IsTrue(strCData == cdata2.GetContent());
-			
-			
 		}
 		TEST_METHOD(SaveReadCommentCollection)
 		{
@@ -107,8 +103,6 @@ namespace UnitTestElmax
 			Assert::IsTrue(strComment == vec2.at(0).GetContent());
 
 			Assert::IsTrue(strComment2 == vec2.at(1).GetContent());
-			
-			
 		}
 		TEST_METHOD(SaveReadCDataCollection)
 		{
@@ -142,8 +136,6 @@ namespace UnitTestElmax
 			Assert::IsTrue(strCData == vec2.at(0).GetContent());
 
 			Assert::IsTrue(strCData2 == vec2.at(1).GetContent());
-			
-			
 		}
 		TEST_METHOD(DeleteComment)
 		{
@@ -177,8 +169,6 @@ namespace UnitTestElmax
 			std::vector<Comment> vec2 = elem2.GetCommentCollection();
 
 			Assert::IsTrue(vec2.empty());
-			
-			
 		}
 		TEST_METHOD(DeleteAllComment)
 		{
@@ -212,8 +202,6 @@ namespace UnitTestElmax
 			std::vector<Comment> vec2 = elem2.GetCommentCollection();
 
 			Assert::IsTrue(vec2.empty());
-			
-			
 		}
 		TEST_METHOD(DeleteCData)
 		{
@@ -247,8 +235,6 @@ namespace UnitTestElmax
 			std::vector<CData> vec2 = elem2.GetCDataCollection();
 
 			Assert::IsTrue(vec2.empty());
-			
-			
 		}
 		TEST_METHOD(DeleteAllCData)
 		{
@@ -282,8 +268,6 @@ namespace UnitTestElmax
 			std::vector<CData> vec2 = elem2.GetCDataCollection();
 
 			Assert::IsTrue(vec2.empty());
-			
-			
 		}
 		TEST_METHOD(UpdateComment)
 		{
@@ -314,8 +298,6 @@ namespace UnitTestElmax
 			Comment comment2 = elem2.GetCommentCollection().at(0);
 
 			Assert::IsTrue(strUpdate == comment2.GetContent());
-			
-			
 		}
 		TEST_METHOD(UpdateCData)
 		{
@@ -346,8 +328,6 @@ namespace UnitTestElmax
 			CData cdata2 = elem2.GetCDataCollection().at(0);
 
 			Assert::IsTrue(strUpdate == cdata2.GetContent());
-			
-			
 		}
 		TEST_METHOD(SaveReadEmptyCommentCollection)
 		{
@@ -373,8 +353,6 @@ namespace UnitTestElmax
 			std::vector<Comment> vec2 = elem2.GetCommentCollection();
 
 			Assert::AreEqual((size_t)(0), vec2.size());
-			
-			
 		}
 		TEST_METHOD(SaveReadEmptyCDataCollection)
 		{
@@ -400,8 +378,6 @@ namespace UnitTestElmax
 			std::vector<CData> vec2 = elem.GetCDataCollection();
 
 			Assert::AreEqual((size_t)(0), vec2.size());
-			
-			
 		}
 	};
 }

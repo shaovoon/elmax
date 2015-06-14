@@ -50,8 +50,6 @@ namespace UnitTestElmax
 			Assert::AreEqual(dd, dd2);
 
 			Assert::IsTrue(rootName == elem2.GetRootName());
-			
-			
 		}
 		TEST_METHOD(SaveReadDateTime)
 		{
@@ -91,8 +89,6 @@ namespace UnitTestElmax
 			Assert::AreEqual(dd.GetHour(), dd2.GetHour());
 			Assert::AreEqual(dd.GetMinute(), dd2.GetMinute());
 			Assert::AreEqual(dd.GetSecond(), dd2.GetSecond());
-			
-			
 		}
 		TEST_METHOD(SaveReadDate)
 		{
@@ -126,8 +122,6 @@ namespace UnitTestElmax
 			Assert::AreEqual(dd.GetYear(), dd2.GetYear());
 			Assert::AreEqual(dd.GetMonth(), dd2.GetMonth());
 			Assert::AreEqual(dd.GetMonthDay(), dd2.GetMonthDay());
-			
-			
 		}
 		TEST_METHOD(SaveReadBoolean)
 		{
@@ -153,8 +147,6 @@ namespace UnitTestElmax
 			bool dd2 = elem2.GetBool(false);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadProcessingInstruction)
 		{
@@ -184,8 +176,6 @@ namespace UnitTestElmax
 			bool dd2 = elem2.GetBool(false);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadInt64)
 		{
@@ -211,8 +201,6 @@ namespace UnitTestElmax
 			ELMAX_INT64 dd2 = elem2.GetInt64(10);
 
 			Assert::IsTrue(dd == dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadInt)
 		{
@@ -238,8 +226,6 @@ namespace UnitTestElmax
 			int dd2 = elem2.GetInt32(10);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadShort)
 		{
@@ -265,8 +251,6 @@ namespace UnitTestElmax
 			short dd2 = elem2.GetInt16(10);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadChar)
 		{
@@ -292,8 +276,6 @@ namespace UnitTestElmax
 			char dd2 = elem2.GetChar('P');
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadUInt64)
 		{
@@ -319,8 +301,6 @@ namespace UnitTestElmax
 			unsigned ELMAX_INT64 dd2 = elem2.GetUInt64(10);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadUInt)
 		{
@@ -346,8 +326,6 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem2.GetUInt32(10);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadUShort)
 		{
@@ -373,8 +351,6 @@ namespace UnitTestElmax
 			unsigned short dd2 = elem2.GetUInt16(10);
 
 			Assert::IsTrue(dd == dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadUChar)
 		{
@@ -400,8 +376,6 @@ namespace UnitTestElmax
 			unsigned char dd2 = elem2.GetUChar(12);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadString)
 		{
@@ -431,11 +405,10 @@ namespace UnitTestElmax
 			TSTR dd2 = elem2.GetString(_TS("A"));
 
 			Assert::IsTrue(dd == dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadEscapeString)
 		{
+			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
 			RootElement root(_TS("aa"));
 
@@ -461,8 +434,6 @@ namespace UnitTestElmax
 			TSTR dd2 = elem2.GetString(_TS("A"));
 
 			Assert::IsTrue(dd == dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadDouble)
 		{
@@ -488,8 +459,6 @@ namespace UnitTestElmax
 			double dd2 = elem2.GetDouble(10.0);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadFloat)
 		{
@@ -515,8 +484,6 @@ namespace UnitTestElmax
 			float dd2 = elem2.GetFloat(10.0f);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadHex)
 		{
@@ -546,8 +513,6 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem2.ReadHex(0xee);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadHexWithPrefix)
 		{
@@ -580,8 +545,6 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem2.ReadHex(0xee);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(SaveReadHexWithLowerCase)
 		{
@@ -611,8 +574,6 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem2.ReadHex(0xee);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		static void executeTests()
 		{

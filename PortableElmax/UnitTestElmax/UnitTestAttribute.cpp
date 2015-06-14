@@ -43,9 +43,6 @@ namespace UnitTestElmax
 			bool dd2 = elem2.GetAttrBool(_TS("Attr"), false);
 
 			Assert::AreEqual(dd, dd2);
-
-			
-			
 		}
 		TEST_METHOD(AttributeDateTime)
 		{
@@ -84,8 +81,6 @@ namespace UnitTestElmax
 			Assert::AreEqual(dd.GetHour(), dd2.GetHour());
 			Assert::AreEqual(dd.GetMinute(), dd2.GetMinute());
 			Assert::AreEqual(dd.GetSecond(), dd2.GetSecond());
-			
-			
 		}
 		TEST_METHOD(AttributeDate)
 		{
@@ -118,8 +113,6 @@ namespace UnitTestElmax
 			Assert::AreEqual(dd.GetYear(), dd2.GetYear());
 			Assert::AreEqual(dd.GetMonth(), dd2.GetMonth());
 			Assert::AreEqual(dd.GetMonthDay(), dd2.GetMonthDay());
-			
-			
 		}
 		TEST_METHOD(AttributeInt64)
 		{
@@ -147,8 +140,6 @@ namespace UnitTestElmax
 			ELMAX_INT64 dd2 = elem2.GetAttrInt64(_TS("Attr"), 10);
 
 			Assert::IsTrue(dd == dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeInt)
 		{
@@ -176,8 +167,6 @@ namespace UnitTestElmax
 			int dd2 = elem2.GetAttrInt32(_TS("Attr"), 10);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeShort)
 		{
@@ -205,8 +194,6 @@ namespace UnitTestElmax
 			short dd2 = elem2.GetAttrInt16(_TS("Attr"), 10);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeChar)
 		{
@@ -234,8 +221,6 @@ namespace UnitTestElmax
 			char dd2 = elem2.GetAttrChar(_TS("Attr"), 'P');
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeUInt64)
 		{
@@ -263,8 +248,6 @@ namespace UnitTestElmax
 			unsigned ELMAX_INT64 dd2 = elem2.GetAttrUInt64(_TS("Attr"), 10);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeUInt)
 		{
@@ -292,8 +275,6 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem2.GetAttrUInt32(_TS("Attr"), 10);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeUShort)
 		{
@@ -321,8 +302,6 @@ namespace UnitTestElmax
 			unsigned short dd2 = elem2.GetAttrUInt16(_TS("Attr"), 10);
 
 			Assert::IsTrue(dd == dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeUChar)
 		{
@@ -350,8 +329,6 @@ namespace UnitTestElmax
 			unsigned char dd2 = elem2.GetAttrUChar(_TS("Attr"), 12);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeWString)
 		{
@@ -379,8 +356,6 @@ namespace UnitTestElmax
 			TSTR dd2 = elem2.GetAttrString(_TS("Attr"), _TS("A"));
 
 			Assert::IsTrue(dd == dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeDouble)
 		{
@@ -408,8 +383,6 @@ namespace UnitTestElmax
 			double dd2 = elem2.GetAttrDouble(_TS("Attr"), 10.0);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeFloat)
 		{
@@ -437,8 +410,6 @@ namespace UnitTestElmax
 			float dd2 = elem2.GetAttrFloat(_TS("Attr"), 10.0f);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeHex)
 		{
@@ -467,8 +438,6 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem2.ReadAttrHex(_TS("dd"), 0xee);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeHexWithPrefix)
 		{
@@ -500,8 +469,6 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem2.ReadAttrHex(_TS("dd"), 0xee);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeHexWithLowerCase)
 		{
@@ -530,8 +497,6 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem2.ReadAttrHex(_TS("dd"), 0xee);
 
 			Assert::AreEqual(dd, dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeNonExistantString)
 		{
@@ -558,8 +523,6 @@ namespace UnitTestElmax
 			TSTR dd2 = elem2.GetAttrString(_TS("Attr"), _TS("A"));
 
 			Assert::IsTrue(dd == dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeNonExistantInt32)
 		{
@@ -586,8 +549,6 @@ namespace UnitTestElmax
 			int dd2 = elem2.GetAttrInt32(_TS("Attr"), 123);
 
 			Assert::AreEqual(123, dd2);
-			
-			
 		}
 		TEST_METHOD(AttributeEmpty)
 		{
@@ -614,9 +575,6 @@ namespace UnitTestElmax
 			TSTR dd2 = elem2.GetAttrString(_TS("Attr"), _TS(""));
 
 			Assert::IsTrue(dd2 == TSTR(_TS("")));
-
-			
-			
 		}
 	};
 }
