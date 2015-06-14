@@ -9,6 +9,7 @@
 *.o
 *.a
 *.sdf
+*.opensdf
 
 [dD]ebug/
 [rR]elease/
