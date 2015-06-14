@@ -288,9 +288,9 @@ void CppLinq()
 		>> join (
 		from (root["Authors"].GetChildren("Author")),
 		// Selects the AuthorID on book element to join on
-		[](Element b) {return b.GetAttrInt32("AuthorID", -1);},
+		[](const Element& b) {return b.GetAttrInt32("AuthorID", -1);},
 		// Selects the AuthorID on author element to join on
-		[](Element a) {return a.GetAttrInt32("AuthorID", -1);},
+		[](const Element& a) {return a.GetAttrInt32("AuthorID", -1);},
 		// Gets book title and author name
 		[](Element b, Element a) -> BookInfo
 		{ BookInfo info = {b["Title"].GetString(""), a["Name"].GetString("")}; return info;}

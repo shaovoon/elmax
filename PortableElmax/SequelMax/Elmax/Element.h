@@ -80,7 +80,7 @@ public:
 	unsigned ELMAX_INT64 GetUInt64(unsigned ELMAX_INT64 defaultVal) const;
 	float GetFloat(float defaultVal) const;
 	double GetDouble(double defaultVal) const;
-	TSTR GetString(const TSTR& defaultVal) const;
+	TSTR GetString(const TSTR& defaultVal = _TS("")) const;
 	SequelMax::Date GetDate(const SequelMax::Date& defaultVal) const;
 	SequelMax::DateAndTime GetDateTime(const SequelMax::DateAndTime& defaultVal) const;
 	unsigned int ReadHex(unsigned int defaultVal) const;

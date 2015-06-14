@@ -386,7 +386,7 @@ public:
 	unsigned ELMAX_INT64 GetUInt64(unsigned ELMAX_INT64 defaultVal) const;
 	float GetFloat(float defaultVal) const;
 	double GetDouble(double defaultVal) const;
-	TSTR GetString(const TSTR& defaultVal) const;
+	TSTR GetString(const TSTR& defaultVal=_TS("")) const;
 	Elmax::Date GetDate(const Elmax::Date& defaultVal) const;
 	Elmax::DateAndTime GetDateTime(const Elmax::DateAndTime& defaultVal) const;
 	unsigned int ReadHex(unsigned int defaultVal) const;
