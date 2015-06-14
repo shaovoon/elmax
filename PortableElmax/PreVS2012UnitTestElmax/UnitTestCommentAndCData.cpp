@@ -25,7 +25,7 @@ namespace UnitTestElmax
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
@@ -39,7 +39,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadComment.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadCommentCheck.xml"), FT_UTF8);
 
@@ -48,14 +48,14 @@ namespace UnitTestElmax
 			Comment comment2 = elem2.GetCommentCollection().at(0);
 
 			Assert::IsTrue(strComment == comment2.GetContent());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadCData)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
@@ -69,7 +69,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadCData.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadCDataCheck.xml"), FT_UTF8);
 
@@ -78,14 +78,14 @@ namespace UnitTestElmax
 			CData cdata2 = elem2.GetCDataCollection().at(0);
 
 			Assert::IsTrue(strCData == cdata2.GetContent());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadCommentCollection)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
@@ -103,7 +103,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadCommentCollection.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadCommentCollectionCheck.xml"), FT_UTF8);
 
@@ -114,14 +114,14 @@ namespace UnitTestElmax
 			Assert::IsTrue(strComment == vec2.at(0).GetContent());
 
 			Assert::IsTrue(strComment2 == vec2.at(1).GetContent());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadCDataCollection)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
@@ -139,7 +139,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadCDataCollection.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadCDataCollectionCheck.xml"), FT_UTF8);
 
@@ -150,14 +150,14 @@ namespace UnitTestElmax
 			Assert::IsTrue(strCData == vec2.at(0).GetContent());
 
 			Assert::IsTrue(strCData2 == vec2.at(1).GetContent());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(DeleteComment)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
@@ -177,7 +177,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("DeleteComment.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("DeleteCommentCheck.xml"), FT_UTF8);
 
@@ -186,14 +186,14 @@ namespace UnitTestElmax
 			std::vector<Comment> vec2 = elem2.GetCommentCollection();
 
 			Assert::IsTrue(vec2.empty());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(DeleteAllComment)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
@@ -213,7 +213,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("DeleteAllComment.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("DeleteAllCommentCheck.xml"), FT_UTF8);
 
@@ -222,14 +222,14 @@ namespace UnitTestElmax
 			std::vector<Comment> vec2 = elem2.GetCommentCollection();
 
 			Assert::IsTrue(vec2.empty());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(DeleteCData)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
@@ -249,7 +249,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("DeleteCData.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("DeleteCDataCheck.xml"), FT_UTF8);
 
@@ -258,14 +258,14 @@ namespace UnitTestElmax
 			std::vector<CData> vec2 = elem2.GetCDataCollection();
 
 			Assert::IsTrue(vec2.empty());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(DeleteAllCData)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
@@ -285,7 +285,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("DeleteAllCData.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("DeleteAllCDataCheck.xml"), FT_UTF8);
 
@@ -294,14 +294,14 @@ namespace UnitTestElmax
 			std::vector<CData> vec2 = elem2.GetCDataCollection();
 
 			Assert::IsTrue(vec2.empty());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(UpdateComment)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
@@ -318,7 +318,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("UpdateComment.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("UpdateCommentCheck.xml"), FT_UTF8);
 
@@ -327,14 +327,14 @@ namespace UnitTestElmax
 			Comment comment2 = elem2.GetCommentCollection().at(0);
 
 			Assert::IsTrue(strUpdate == comment2.GetContent());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(UpdateCData)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
@@ -351,7 +351,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("UpdateCData.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("UpdateCDataCheck.xml"), FT_UTF8);
 
@@ -360,14 +360,14 @@ namespace UnitTestElmax
 			CData cdata2 = elem2.GetCDataCollection().at(0);
 
 			Assert::IsTrue(strUpdate == cdata2.GetContent());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadEmptyCommentCollection)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
@@ -379,7 +379,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadEmptyCommentCollection.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadEmptyCommentCollectionCheck.xml"), FT_UTF8);
 
@@ -388,14 +388,14 @@ namespace UnitTestElmax
 			std::vector<Comment> vec2 = elem2.GetCommentCollection();
 
 			Assert::AreEqual((size_t)(0), vec2.size());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadEmptyCDataCollection)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
@@ -407,7 +407,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadEmptyCDataCollection.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadEmptyCDataCollectionCheck.xml"), FT_UTF8);
 
@@ -416,8 +416,8 @@ namespace UnitTestElmax
 			std::vector<CData> vec2 = elem.GetCDataCollection();
 
 			Assert::AreEqual((size_t)(0), vec2.size());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		static void executeTests()
 		{

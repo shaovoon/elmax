@@ -83,7 +83,7 @@ namespace UnitTestElmax
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -106,7 +106,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("QueryChildrenNum1.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("QueryChildrenNum1Check.xml"), FT_UTF8);
 
@@ -114,14 +114,14 @@ namespace UnitTestElmax
 
 			Assert::AreEqual(acmap2[_TS("cc")], (unsigned int)(3));
 			Assert::AreEqual(acmap2[_TS("qq")], (unsigned int)(2));
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(QueryChildrenNum2)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -144,7 +144,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("QueryChildrenNum2.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("QueryChildrenNum2Check.xml"), FT_UTF8);
 
@@ -152,14 +152,14 @@ namespace UnitTestElmax
 
 			Assert::AreEqual(acmap2[_TS("cc")], (unsigned int)(3));
 			Assert::AreEqual(acmap2[_TS("qq")], (unsigned int)(2));
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(AsCollection1)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -181,7 +181,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("AsCollection1.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("AsCollection1Check.xml"), FT_UTF8);
 
@@ -192,14 +192,14 @@ namespace UnitTestElmax
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
 			}
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(AsCollection2)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -221,7 +221,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("AsCollection2.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("AsCollection2Check.xml"), FT_UTF8);
 
@@ -232,14 +232,14 @@ namespace UnitTestElmax
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
 			}
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(AsCollectionPred)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -262,7 +262,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("AsCollectionPred.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("AsCollectionPredCheck.xml"), FT_UTF8);
 
@@ -273,14 +273,14 @@ namespace UnitTestElmax
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
 			}
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(GetChildren1)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -302,7 +302,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("GetChildren1.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("GetChildren1Check.xml"), FT_UTF8);
 
@@ -313,14 +313,14 @@ namespace UnitTestElmax
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
 			}
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(GetChildren2)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -342,7 +342,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("GetChildren2.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("GetChildren2Check.xml"), FT_UTF8);
 
@@ -353,14 +353,14 @@ namespace UnitTestElmax
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
 			}
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(GetChildrenPred)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -383,7 +383,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("GetChildrenPred.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("GetChildrenPredCheck.xml"), FT_UTF8);
 
@@ -394,14 +394,14 @@ namespace UnitTestElmax
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
 			}
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(CountPred)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -416,13 +416,13 @@ namespace UnitTestElmax
 			unsigned int cnt = root[_TS("bb")].Count(_TS("cc"),  pred);
 
 			Assert::AreEqual((unsigned int)(2), cnt);
-			root.Destroy();
+			
 		}
 		TEST_METHOD(DetachAndAddNode)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			int dd = 2000000000;
@@ -449,7 +449,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("DetachAndAddNode.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("DetachAndAddNodeCheck.xml"), FT_UTF8);
 
@@ -458,14 +458,14 @@ namespace UnitTestElmax
 
 			dd2 = elem2[_TS("dd")].GetInt32(10);
 			Assert::AreEqual(10, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(RemoveNode)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			int dd = 2000000000;
@@ -480,7 +480,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("RemoveNode.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("RemoveNodeCheck.xml"), FT_UTF8);
 
@@ -488,14 +488,14 @@ namespace UnitTestElmax
 
 			dd2 = elem2.GetInt32(10);
 			Assert::AreEqual(10, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(TestDelimiter)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			ELMAX_INT64 dd = 14000000000L;
@@ -505,7 +505,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("TestDelimiter1.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("TestDelimiter1Check.xml"), FT_UTF8);
 
@@ -515,14 +515,14 @@ namespace UnitTestElmax
 			ELMAX_INT64 dd2 = elem2.GetInt64(10);
 
 			Assert::IsTrue(dd == dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(EmptyAsCollection)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("cc"));
+			RootElement root(_TS("cc"));
 
 			Element elem1 = root.Create(_TS("aa"));
 			elem1.SetInt32(11);
@@ -543,7 +543,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("EmptyAsCollection.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("EmptyAsCollectionCheck.xml"), FT_UTF8);
 
@@ -558,14 +558,14 @@ namespace UnitTestElmax
 			{
 				bExceptionThrown = true;
 			}
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(EmptyGetChildren)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem1 = root.Create(_TS("bb"));
 			elem1.SetInt32(11);
@@ -577,21 +577,21 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("EmptyGetChildren.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("EmptyGetChildrenCheck.xml"), FT_UTF8);
 
 			Element::collection_t vec2 = root2[_TS("bb")].GetChildren(_TS("cc"));
 
 			Assert::AreEqual((size_t)(0), vec2.size());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(EmptyQueryChildrenNum)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("cc"));
+			RootElement root(_TS("cc"));
 
 			root.Create(_TS("aa"));
 
@@ -602,21 +602,21 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("EmptyQueryChildrenNum.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("EmptyQueryChildrenNumCheck.xml"), FT_UTF8);
 
 			Element::available_child_t acmap2 = root2[_TS("aa")].QueryChildrenNum();
 
 			Assert::AreEqual((size_t)(0), acmap2.size());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(InvalidElementGetChildren)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("cc"));
+			RootElement root(_TS("cc"));
 
 			Element elem1 = root.Create(_TS("aa"));
 			elem1.SetInt32(11);
@@ -637,7 +637,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("InvalidElementGetChildren.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("InvalidElementGetChildrenCheck.xml"), FT_UTF8);
 
@@ -653,14 +653,14 @@ namespace UnitTestElmax
 				bExceptionThrown = true;
 			}
 			Assert::IsTrue(bExceptionThrown);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(InvalidElementQueryChildrenNum)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("cc"));
+			RootElement root(_TS("cc"));
 
 			root.Create(_TS("aa"));
 
@@ -680,7 +680,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("InvalidElementQueryChildrenNum.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("InvalidElementQueryChildrenNumCheck.xml"), FT_UTF8);
 
@@ -696,14 +696,14 @@ namespace UnitTestElmax
 				bExceptionThrown = true;
 			}
 			Assert::IsTrue(bExceptionThrown);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(Sort)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -719,14 +719,14 @@ namespace UnitTestElmax
 			Assert::AreEqual(list[0].GetDouble(0), 11.0);
 			Assert::AreEqual(list[1].GetDouble(0), 22.0);
 			Assert::AreEqual(list[2].GetDouble(0), 33.0);
-			root.Destroy();
+			
 		}
 
 		TEST_METHOD(Iterator1)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -755,7 +755,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("Iterator1.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("Iterator1Check.xml"), FT_UTF8);
 
@@ -770,15 +770,15 @@ namespace UnitTestElmax
 				sum += (*it2).GetInt32(10);
 			}
 			Assert::AreEqual((size_t)(66), sum);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 
 		TEST_METHOD(Iterator2)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -807,7 +807,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("Iterator2.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("Iterator2Check.xml"), FT_UTF8);
 
@@ -822,14 +822,14 @@ namespace UnitTestElmax
 				sum += (*it2).GetInt32(10);
 			}
 			Assert::AreEqual((size_t)(110), sum);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveToString)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -857,7 +857,7 @@ namespace UnitTestElmax
 
 			TSTR saved = root.ToString();
 
-			Element root2;
+			RootElement root2;
 			root2.ParseXMLString(saved);
 			TSTR saved2 = root2.ToString();
 			Assert::IsTrue(saved == saved2);
@@ -873,15 +873,15 @@ namespace UnitTestElmax
 				sum += (*it2).GetInt32(10);
 			}
 			Assert::AreEqual((size_t)(110), sum);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 
 		TEST_METHOD(SaveToPrettyString)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elembb = root.Create(_TS("bb"));
 
@@ -909,7 +909,7 @@ namespace UnitTestElmax
 
 			TSTR saved = root.ToPrettyString(_TS("  "));
 
-			Element root2;
+			RootElement root2;
 			root2.ParseXMLString(saved);
 			TSTR saved2 = root2.ToPrettyString(_TS("  "));
 			Assert::IsTrue(saved == saved2);
@@ -925,8 +925,8 @@ namespace UnitTestElmax
 				sum += (*it2).GetInt32(10);
 			}
 			Assert::AreEqual((size_t)(110), sum);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		static void executeTests()
 		{

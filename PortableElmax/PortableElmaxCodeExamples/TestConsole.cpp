@@ -12,34 +12,30 @@ using namespace std;
 void WriteElement(std::string& xml)
 {
 	using namespace Elmax;
-	Element root("Products");
+	RootElement root("Products");
 
-	root["Product|Qty"].SetInt32(1234);
+	root.Create("Product").Create("Qty").SetInt32(1234);
 
 	xml = root.ToPrettyString("    ");
 
 	std::cout << xml << std::endl;
-
-	root.Destroy();
 }
 
 void ReadElement(const std::string& xml)
 {
 	using namespace Elmax;
-	Element root;
+	RootElement root;
 	root.ParseXMLString(xml);
 
-	int qty = root["Product|Qty"].GetInt32(0);
+	int qty = root["Product"]["Qty"].GetInt32(0);
 
 	std::cout << "Qty:" << qty << std::endl;
-	
-	root.Destroy();
 }
 
 void WriteAttr(std::string& xml)
 {
 	using namespace Elmax;
-	Element root("Products");
+	RootElement root("Products");
 
 	Element elem = root.Create("Product");
 	elem.SetAttrInt32("Qty", 1234);
@@ -48,7 +44,7 @@ void WriteAttr(std::string& xml)
 
 	std::cout << xml << std::endl;
 
-	root.Destroy();
+	
 }
 
 void ReadAttr(const std::string& xml)
@@ -65,13 +61,13 @@ void ReadAttr(const std::string& xml)
 
 	std::cout << "Qty:" << qty << std::endl;
 
-	root.Destroy();
+	
 }
 
 void WriteComment(std::string& xml)
 {
 	using namespace Elmax;
-	Element root("Products");
+	RootElement root("Products");
 
 	Element elem = root.Create("Product");
 	elem.SetAttrInt32("Qty", 1234);
@@ -81,7 +77,7 @@ void WriteComment(std::string& xml)
 
 	std::cout << xml << std::endl;
 
-	root.Destroy();
+	
 }
 
 void ReadComment(const std::string& xml)
@@ -103,13 +99,13 @@ void ReadComment(const std::string& xml)
 	if(vec.size()>0)
 		std::cout << "Comment:" << vec[0].GetContent() << std::endl;
 
-	root.Destroy();
+	
 }
 
 void WriteCData(std::string& xml)
 {
 	using namespace Elmax;
-	Element root("Products");
+	RootElement root("Products");
 
 	Element elem = root.Create("Product");
 	elem.SetAttrInt32("Qty", 1234);
@@ -119,7 +115,7 @@ void WriteCData(std::string& xml)
 
 	std::cout << xml << std::endl;
 
-	root.Destroy();
+	
 }
 
 void ReadCData(const std::string& xml)
@@ -141,28 +137,28 @@ void ReadCData(const std::string& xml)
 	if(vec.size()>0)
 		std::cout << "CData:" << vec[0].GetContent() << std::endl;
 
-	root.Destroy();
+	
 }
 
 void NamespaceUri()
 {
 	using namespace Elmax;
-	Element root("Products");
+	RootElement root("Products");
 
-	Element elem = root["Product|Grocery:Item"].Create("http://www.example.com");
+	Element elem = root.Create("Product").Create("Grocery:Item", "http://www.example.com");
 	elem.SetInt32(1234);
 
 	string xml = root.ToPrettyString("    ");
 
 	std::cout << xml << std::endl;
 
-	root.Destroy();
+	
 }
 
 void AsCollection()
 {
 	using namespace Elmax;
-	Element root("Products");
+	RootElement root("Products");
 
 	Element elem1 = root.Create(_TS("Product"));
 	elem1.SetAttrInt32("Qty", 400);
@@ -184,13 +180,13 @@ void AsCollection()
 		cout << vec[i].GetString("") << ":" << vec[i].GetAttrInt32("Qty", 0) << std::endl;
 	}
 
-	root.Destroy();
+	
 }
 
 void AsCollectionLambda()
 {
 	using namespace Elmax;
-	Element root("Products");
+	RootElement root("Products");
 
 	Element elem1 = root.Create(_TS("Product"));
 	elem1.SetAttrInt32("Qty", 400);
@@ -215,13 +211,13 @@ void AsCollectionLambda()
 		cout << vec[i].GetString("") << ":" << vec[i].GetAttrInt32("Qty", 0) << std::endl;
 	}
 
-	root.Destroy();
+	
 }
 
 void Iterators()
 {
 	using namespace Elmax;
-	Element root("Products");
+	RootElement root("Products");
 
 	Element elem1 = root.Create(_TS("Product"));
 	elem1.SetAttrInt32("Qty", 400);
@@ -243,13 +239,13 @@ void Iterators()
 		cout << (*it).GetString("") << ":" << (*it).GetAttrInt32("Qty", 0) << std::endl;
 	}
 
-	root.Destroy();
+	
 }
 
 void CppLinq()
 {
 	using namespace Elmax;
-	Element root("Bookstore");
+	RootElement root("Bookstore");
 
 	Element Book1 = root.Create(_TS("Books")).Create(_TS("Book"));
 	Book1.SetAttrInt32("AuthorID", 1255);
@@ -302,7 +298,7 @@ void CppLinq()
 		std::cout << result[i].title << " is written by " << result[i].author << std::endl;
 	}
 	
-	root.Destroy();
+	
 }
 
 int _tmain(int argc, _TCHAR* argv[])

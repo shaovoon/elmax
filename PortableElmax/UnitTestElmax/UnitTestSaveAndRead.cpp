@@ -20,7 +20,7 @@ namespace UnitTestElmax
 		TEST_METHOD(SaveReadRootName)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			TSTR rootName = _TS("aa");
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
@@ -33,7 +33,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadRootName.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadRootNameCheck.xml"), FT_UTF8);
 
@@ -45,13 +45,13 @@ namespace UnitTestElmax
 			Assert::AreEqual(dd, dd2);
 
 			Assert::IsTrue(rootName == elem2.GetRootName());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadDateTime)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			DateAndTime dd(2006, 7, 23, 9, 0, 23);
@@ -70,7 +70,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadDateTime.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadDateTimeCheck.xml"), FT_UTF8);
 
@@ -85,13 +85,13 @@ namespace UnitTestElmax
 			Assert::AreEqual(dd.GetHour(), dd2.GetHour());
 			Assert::AreEqual(dd.GetMinute(), dd2.GetMinute());
 			Assert::AreEqual(dd.GetSecond(), dd2.GetSecond());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadDate)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Date dd(2010, 10, 1);
@@ -107,7 +107,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadDate.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadDateCheck.xml"), FT_UTF8);
 
@@ -119,13 +119,13 @@ namespace UnitTestElmax
 			Assert::AreEqual(dd.GetYear(), dd2.GetYear());
 			Assert::AreEqual(dd.GetMonth(), dd2.GetMonth());
 			Assert::AreEqual(dd.GetMonthDay(), dd2.GetMonthDay());
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadBoolean)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			bool dd = true;
@@ -135,7 +135,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadBoolean.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadBooleanCheck.xml"), FT_UTF8);
 
@@ -145,13 +145,13 @@ namespace UnitTestElmax
 			bool dd2 = elem2.GetBool(false);
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadProcessingInstruction)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			bool dd = true;
@@ -161,7 +161,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadProcessingInstruction.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			std::map<TSTR, TSTR> prep;;
 			root2.Open(prep, file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadProcessingInstructionCheck.xml"), FT_UTF8);
@@ -175,13 +175,13 @@ namespace UnitTestElmax
 			bool dd2 = elem2.GetBool(false);
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadInt64)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			ELMAX_INT64 dd = 14000000000L;
@@ -191,7 +191,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadInt64.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadInt64Check.xml"), FT_UTF8);
 
@@ -201,13 +201,13 @@ namespace UnitTestElmax
 			ELMAX_INT64 dd2 = elem2.GetInt64(10);
 
 			Assert::IsTrue(dd == dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadInt)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			int dd = 2000000000;
@@ -217,7 +217,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadIntSaveReadInt.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadIntCheck.xml"), FT_UTF8);
 
@@ -227,13 +227,13 @@ namespace UnitTestElmax
 			int dd2 = elem2.GetInt32(10);
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadShort)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			short dd = 32000;
@@ -243,7 +243,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadShort.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadShortCheck.xml"), FT_UTF8);
 
@@ -253,13 +253,13 @@ namespace UnitTestElmax
 			short dd2 = elem2.GetInt16(10);
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadChar)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			char dd = 'A';
@@ -269,7 +269,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadChar.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadCharCheck.xml"), FT_UTF8);
 
@@ -279,13 +279,13 @@ namespace UnitTestElmax
 			char dd2 = elem2.GetChar('P');
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadUInt64)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			unsigned ELMAX_INT64 dd = 14000000000UL;
@@ -295,7 +295,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadUInt64.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadUInt64Check.xml"), FT_UTF8);
 
@@ -305,13 +305,13 @@ namespace UnitTestElmax
 			unsigned ELMAX_INT64 dd2 = elem2.GetUInt64(10);
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadUInt)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			unsigned int dd = 4000000000;
@@ -321,7 +321,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadUInt.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadUIntCheck.xml"), FT_UTF8);
 
@@ -331,13 +331,13 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem2.GetUInt32(10);
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadUShort)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			unsigned short dd = 65000;
@@ -347,7 +347,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadUShort.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadUShortCheck.xml"), FT_UTF8);
 
@@ -357,13 +357,13 @@ namespace UnitTestElmax
 			unsigned short dd2 = elem2.GetUInt16(10);
 
 			Assert::IsTrue(dd == dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadUChar)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			unsigned char dd = 255;
@@ -373,7 +373,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadUChar.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadUCharCheck.xml"), FT_UTF8);
 
@@ -383,13 +383,13 @@ namespace UnitTestElmax
 			unsigned char dd2 = elem2.GetUChar(12);
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadString)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			TSTR dd = _TS("ABCD");
@@ -403,7 +403,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadString.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadStringCheck.xml"), FT_UTF8);
 
@@ -413,13 +413,13 @@ namespace UnitTestElmax
 			TSTR dd2 = elem2.GetString(_TS("A"));
 
 			Assert::IsTrue(dd == dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadEscapeString)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			TSTR dd = _TS("<ABCD>");
@@ -433,7 +433,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadEscapeString.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadStringCheck.xml"), FT_UTF8);
 
@@ -443,13 +443,13 @@ namespace UnitTestElmax
 			TSTR dd2 = elem2.GetString(_TS("A"));
 
 			Assert::IsTrue(dd == dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadDouble)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			double dd = 123.0;
@@ -459,7 +459,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadDouble.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadDoubleCheck.xml"), FT_UTF8);
 
@@ -469,13 +469,13 @@ namespace UnitTestElmax
 			double dd2 = elem2.GetDouble(10.0);
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadFloat)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			float dd = 123.0f;
@@ -485,7 +485,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadFloat.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadFloatCheck.xml"), FT_UTF8);
 
@@ -495,13 +495,13 @@ namespace UnitTestElmax
 			float dd2 = elem2.GetFloat(10.0f);
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadHex)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			unsigned int dd = 0xACAC;
@@ -515,7 +515,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadHex.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadHexCheck.xml"), FT_UTF8);
 
@@ -525,13 +525,13 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem2.ReadHex(0xee);
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadHexWithPrefix)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			unsigned int dd = 0xACAC;
@@ -548,7 +548,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadHexWithPrefix.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadHexWithPrefixCheck.xml"), FT_UTF8);
 
@@ -558,13 +558,13 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem2.ReadHex(0xee);
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 		TEST_METHOD(SaveReadHexWithLowerCase)
 		{
 			using namespace Elmax;
-			Element root(_TS("aa"));
+			RootElement root(_TS("aa"));
 
 			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			unsigned int dd = 0xACAC;
@@ -578,7 +578,7 @@ namespace UnitTestElmax
 			TSTR file = GetFolderPath() + _TS("SaveReadHexWithLowerCase.xml");
 			root.Save(file, FT_UTF8);
 
-			Element root2;
+			RootElement root2;
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadHexWithLowerCaseCheck.xml"), FT_UTF8);
 
@@ -588,8 +588,8 @@ namespace UnitTestElmax
 			unsigned int dd2 = elem2.ReadHex(0xee);
 
 			Assert::AreEqual(dd, dd2);
-			root.Destroy();
-			root2.Destroy();
+			
+			
 		}
 	};
 }
