@@ -10,6 +10,8 @@
 *.a
 *.sdf
 
+[dD]ebug/
+[rR]elease/
 */[dD]ebug/
 */[rR]elease/
 */*/[dD]ebug/

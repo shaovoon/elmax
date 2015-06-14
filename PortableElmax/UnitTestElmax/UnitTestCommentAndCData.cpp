@@ -22,7 +22,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 			TSTR strComment = _TS("Can you see me?");
 			elem.AddComment(strComment);
@@ -38,7 +38,7 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadCommentCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 			Comment comment2 = elem2.GetCommentCollection().at(0);
 
@@ -51,7 +51,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 			TSTR strCData = _TS("<data>Where is my data?</data>");
 			elem.AddCData(strCData);
@@ -67,7 +67,7 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadCDataCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 			CData cdata2 = elem2.GetCDataCollection().at(0);
 
@@ -80,7 +80,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 			TSTR strComment = _TS("Can you see me?");
 			elem.AddComment(strComment);
@@ -100,7 +100,7 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadCommentCollectionCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 			std::vector<Comment> vec2 = elem2.GetCommentCollection();
 
@@ -115,7 +115,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 			TSTR strCData = _TS("<data>Where is my data?</data>");
 			elem.AddCData(strCData);
@@ -135,7 +135,7 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadCDataCollectionCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 			std::vector<CData> vec2 = elem.GetCDataCollection();
 
@@ -150,7 +150,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 			TSTR strComment = _TS("Can you see me?");
 			elem.AddComment(strComment);
@@ -172,7 +172,7 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("DeleteCommentCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 			std::vector<Comment> vec2 = elem2.GetCommentCollection();
 
@@ -185,7 +185,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 			TSTR strComment = _TS("Can you see me?");
 			elem.AddComment(strComment);
@@ -207,7 +207,7 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("DeleteAllCommentCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 			std::vector<Comment> vec2 = elem2.GetCommentCollection();
 
@@ -220,7 +220,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 			TSTR strCData = _TS("<data>Where is my data?</data>");
 			elem.AddCData(strCData);
@@ -242,7 +242,7 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("DeleteCDataCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 			std::vector<CData> vec2 = elem2.GetCDataCollection();
 
@@ -255,7 +255,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 			TSTR strCData = _TS("<data>Where is my data?</data>");
 			elem.AddCData(strCData);
@@ -277,7 +277,7 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("DeleteAllCDataCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 			std::vector<CData> vec2 = elem2.GetCDataCollection();
 
@@ -290,7 +290,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 			TSTR strComment = _TS("Can you see me?");
 			elem.AddComment(strComment);
@@ -309,7 +309,7 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("UpdateCommentCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 			Comment comment2 = elem2.GetCommentCollection().at(0);
 
@@ -322,7 +322,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 			TSTR strCData = _TS("<data>Where is my data?</data>");
 			elem.AddCData(strCData);
@@ -341,7 +341,7 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("UpdateCDataCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 			CData cdata2 = elem2.GetCDataCollection().at(0);
 
@@ -354,7 +354,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 
 			std::vector<Comment> vec = elem.GetCommentCollection();
@@ -368,7 +368,7 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadEmptyCommentCollectionCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 			std::vector<Comment> vec2 = elem2.GetCommentCollection();
 
@@ -381,7 +381,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 
 			std::vector<CData> vec = elem.GetCDataCollection();
@@ -395,168 +395,11 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("SaveReadEmptyCDataCollectionCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 			std::vector<CData> vec2 = elem.GetCDataCollection();
 
 			Assert::AreEqual((size_t)(0), vec2.size());
-			root.Destroy();
-			root2.Destroy();
-		}
-		TEST_METHOD(InvalidElementCData)
-		{
-			using namespace Elmax;
-			Element root(_TS("aa"));
-
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
-			Assert::IsTrue(elem.Exists());
-			TSTR strCData = _TS("<data>Where is my data?</data>");
-			bool bExceptThrown = false;
-			try
-			{
-				Assert::AreEqual(false, elem[_TS("dd")].AddCData(strCData));
-			}
-			catch (std::exception e)
-			{
-				bExceptThrown = true;
-			}
-			Assert::IsTrue(bExceptThrown);
-			bExceptThrown = false;
-
-			try
-			{
-				std::vector<CData> vec = elem[_TS("dd")].GetCDataCollection();
-
-				Assert::AreEqual((size_t)(0), vec.size());
-			}
-			catch (std::exception e)
-			{
-				bExceptThrown = true;
-			}
-			Assert::IsTrue(bExceptThrown);
-			bExceptThrown = false;
-
-			try
-			{
-				Assert::AreEqual(false, elem[_TS("dd")].DeleteAllCData());
-			}
-			catch (std::exception e)
-			{
-				bExceptThrown = true;
-			}
-			Assert::IsTrue(bExceptThrown);
-
-			TSTR file = GetFolderPath() + _TS("InvalidElementCData.xml");
-			root.Save(file, FT_UTF8);
-
-			Element root2;
-			root2.Open(file);
-			//root2.Save(GetFolderPath() + _TS("InvalidElementCDataCheck.xml"), FT_UTF8);
-
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
-			Assert::IsTrue(elem2.Exists());
-			bExceptThrown = false;
-			try
-			{
-				std::vector<CData> vec2 = elem2[_TS("dd")].GetCDataCollection();
-				Assert::AreEqual((size_t)(0), vec2.size());
-			}
-			catch (std::exception e)
-			{
-				bExceptThrown = true;
-			}
-			Assert::IsTrue(bExceptThrown);
-
-			bExceptThrown = false;
-
-			try
-			{
-				Assert::AreEqual(false, elem2[_TS("dd")].DeleteAllCData());
-			}
-			catch (std::exception e)
-			{
-				bExceptThrown = true;
-			}
-			Assert::IsTrue(bExceptThrown);
-			root.Destroy();
-			root2.Destroy();
-		}
-		TEST_METHOD(InvalidElementComment)
-		{
-			using namespace Elmax;
-			Element root(_TS("aa"));
-
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
-			Assert::IsTrue(elem.Exists());
-			TSTR strComment = _TS("Can you see me?");
-			bool bExceptThrown = false;
-			try
-			{
-				Assert::AreEqual(false, elem[_TS("dd")].AddComment(strComment));
-			}
-			catch (std::exception e)
-			{
-				bExceptThrown = true;
-			}
-			Assert::IsTrue(bExceptThrown);
-			bExceptThrown = false;
-
-			try
-			{
-				std::vector<Comment> vec = elem[_TS("dd")].GetCommentCollection();
-
-				Assert::AreEqual((size_t)(0), vec.size());
-			}
-			catch (std::exception e)
-			{
-				bExceptThrown = true;
-			}
-			Assert::IsTrue(bExceptThrown);
-			bExceptThrown = false;
-
-			try
-			{
-				Assert::AreEqual(false, elem[_TS("dd")].DeleteAllComments());
-			}
-			catch (std::exception e)
-			{
-				bExceptThrown = true;
-			}
-			Assert::IsTrue(bExceptThrown);
-
-			TSTR file = GetFolderPath() + _TS("InvalidElementComment.xml");
-			root.Save(file, FT_UTF8);
-
-			Element root2;
-			root2.Open(file);
-			//root2.Save(GetFolderPath() + _TS("InvalidElementCommentCheck.xml"), FT_UTF8);
-
-			Element elem2 = root2[_TS("aa")][_TS("bb")][_TS("cc")];
-			Assert::IsTrue(elem2.Exists());
-
-			bExceptThrown = false;
-			try
-			{
-				std::vector<Comment> vec2 = elem2[_TS("dd")].GetCommentCollection();
-				Assert::AreEqual((size_t)(0), vec2.size());
-			}
-			catch (std::exception e)
-			{
-				bExceptThrown = true;
-			}
-			Assert::IsTrue(bExceptThrown);
-
-			bExceptThrown = false;
-
-			try
-			{
-				Assert::AreEqual(false, elem2[_TS("dd")].DeleteAllComments());
-			}
-			catch (std::exception e)
-			{
-				bExceptThrown = true;
-			}
-			Assert::IsTrue(bExceptThrown);
 			root.Destroy();
 			root2.Destroy();
 		}

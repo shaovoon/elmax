@@ -15,10 +15,10 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			DateAndTime dd(2006, 7, 23, 9, 0, 23);
 			Assert::IsTrue(elem.Exists());
-			DateAndTime dd3 = elem[_TS("dd")].GetDateTime(dd);
+			DateAndTime dd3 = elem.GetDateTime(dd);
 
 			Assert::AreEqual(dd.GetYear(), dd3.GetYear());
 			Assert::AreEqual(dd.GetMonth(), dd3.GetMonth());
@@ -33,10 +33,10 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Date dd(2010, 10, 1);
 			Assert::IsTrue(elem.Exists());
-			Date dd3 = elem[_TS("dd")].GetDate(dd);
+			Date dd3 = elem.GetDate(dd);
 
 			Assert::AreEqual(dd.GetYear(), dd3.GetYear());
 			Assert::AreEqual(dd.GetMonth(), dd3.GetMonth());
@@ -48,11 +48,11 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			bool dd = false;
 			Assert::IsTrue(elem.Exists());
 
-			bool dd2 = elem[_TS("dd")].GetBool(false);
+			bool dd2 = elem.GetBool(false);
 
 			Assert::AreEqual(dd, dd2);
 			root.Destroy();
@@ -62,11 +62,11 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			ELMAX_INT64 dd = 14000000000L;
 			Assert::IsTrue(elem.Exists());
 
-			ELMAX_INT64 dd2 = elem[_TS("dd")].GetInt64(dd);
+			ELMAX_INT64 dd2 = elem.GetInt64(dd);
 
 			Assert::IsTrue(dd == dd2);
 			root.Destroy();
@@ -76,11 +76,11 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			int dd = 2000000000;
 			Assert::IsTrue(elem.Exists());
 
-			int dd2 = elem[_TS("dd")].GetInt32(dd);
+			int dd2 = elem.GetInt32(dd);
 
 			Assert::AreEqual(dd, dd2);
 			root.Destroy();
@@ -90,11 +90,11 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			short dd = 32000;
 			Assert::IsTrue(elem.Exists());
 
-			short dd2 = elem[_TS("dd")].GetInt16(dd);
+			short dd2 = elem.GetInt16(dd);
 
 			Assert::AreEqual(dd, dd2);
 			root.Destroy();
@@ -104,11 +104,11 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			char dd = 'A';
 			Assert::IsTrue(elem.Exists());
 
-			char dd2 = elem[_TS("dd")].GetChar(dd);
+			char dd2 = elem.GetChar(dd);
 
 			Assert::AreEqual(dd, dd2);
 			root.Destroy();
@@ -118,11 +118,11 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			unsigned ELMAX_INT64 dd = 14000000000UL;
 			Assert::IsTrue(elem.Exists());
 
-			unsigned ELMAX_INT64 dd2 = elem[_TS("dd")].GetUInt64(dd);
+			unsigned ELMAX_INT64 dd2 = elem.GetUInt64(dd);
 
 			Assert::AreEqual(dd, dd2);
 			root.Destroy();
@@ -132,11 +132,11 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			unsigned int dd = 4000000000;
 			Assert::IsTrue(elem.Exists());
 
-			unsigned int dd2 = elem[_TS("dd")].GetUInt32(dd);
+			unsigned int dd2 = elem.GetUInt32(dd);
 
 			Assert::AreEqual(dd, dd2);
 			root.Destroy();
@@ -146,11 +146,11 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			unsigned short dd = 65000;
 			Assert::IsTrue(elem.Exists());
 
-			unsigned short dd2 = elem[_TS("dd")].GetUInt16(dd);
+			unsigned short dd2 = elem.GetUInt16(dd);
 
 			Assert::IsTrue(dd == dd2);
 			root.Destroy();
@@ -160,11 +160,11 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			unsigned char dd = 255;
 			Assert::IsTrue(elem.Exists());
 
-			unsigned char dd2 = elem[_TS("dd")].GetUChar(dd);
+			unsigned char dd2 = elem.GetUChar(dd);
 
 			Assert::AreEqual(dd, dd2);
 			root.Destroy();
@@ -174,11 +174,11 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			TSTR dd = _TS("ABCD");
 			Assert::IsTrue(elem.Exists());
 
-			TSTR dd2 = elem[_TS("dd")].GetString(dd);
+			TSTR dd2 = elem.GetString(dd);
 
 			Assert::IsTrue(dd == dd2);
 			root.Destroy();
@@ -188,11 +188,11 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			double dd = 123.0;
 			Assert::IsTrue(elem.Exists());
 
-			double dd2 = elem[_TS("dd")].GetDouble(dd);
+			double dd2 = elem.GetDouble(dd);
 
 			Assert::AreEqual(dd, dd2);
 			root.Destroy();
@@ -202,11 +202,11 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			float dd = 123.0f;
 			Assert::IsTrue(elem.Exists());
 
-			float dd2 = elem[_TS("dd")].GetFloat(dd);
+			float dd2 = elem.GetFloat(dd);
 
 			Assert::AreEqual(dd, dd2);
 			root.Destroy();
@@ -216,10 +216,10 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			Assert::IsTrue(elem.Exists());
 
-			unsigned int ans = elem[_TS("dd")].ReadHex(0xee);
+			unsigned int ans = elem.ReadHex(0xee);
 
 			Assert::AreEqual((unsigned int)(0xee), ans);
 			root.Destroy();

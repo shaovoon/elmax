@@ -27,11 +27,6 @@ public:
 	// to be used in inplace sort prediate to wrap the RawElement pointers in Element object for better processing
 	Element(RawElement* pRawElement);
 
-	Element(
-		RawElement* pRawElement,
-		const TSTR& nonExistingParent, 
-		const TSTR& name, 
-		bool bValid);
 	//! Copy constructor
 	Element(const Element& other);
 	//! Assignment operator
@@ -156,14 +151,12 @@ public:
 	//! Get the root name (to access the root)
 	TSTR GetRootName();
 	//! Get the element name
-	TSTR GetName() { return m_strName; }
+	TSTR GetName() { if (m_pRawElement) return m_pRawElement->GetName(); return _TS(""); }
 
 	//! Returns true if the attribute with the name exists.
 	bool Exists() const;
-	//! Create this element with this optional namespaceUri, if not exists
-	Element Create(const TSTR& namespaceUri=_TS(""));
-	//! Always create this element with this optional namespaceUri
-	Element CreateNew(const TSTR& namespaceUri=_TS(""));
+	//! Always create this child element with this optional namespaceUri
+	Element Create(const TSTR& name, const TSTR& namespaceUri = _TS(""));
 	//! Add this node as child node
 	bool AddNode(Element& node);
 	//! Delete this child node (node cannot be reused)
@@ -203,11 +196,10 @@ public:
 	template<typename Predicate>
 	collection_t AsCollection(Predicate pred)
 	{
-		if(!m_pRawElement || false == IS_EMPTY(m_strNonExistingParent) || false == m_bValid)
+		if(!m_pRawElement)
 			throw std::runtime_error("Invalid Element");
 
 		collection_t vec;
-		ResolveNullNode(m_strName);
 		RawElement* parent = static_cast<RawElement*>(m_pRawElement->GetParent());
 		if(!parent)
 			return vec;
@@ -223,7 +215,7 @@ public:
 
 				if(name==m_pRawElement->GetName())
 				{
-					Element ele(static_cast<RawElement*>((*nodevec)[i]), _TS(""), m_strName, true);
+					Element ele(static_cast<RawElement*>((*nodevec)[i]));
 					if(pred(ele))
 						vec.push_back(ele);
 				}
@@ -244,11 +236,10 @@ public:
 	template<typename Predicate>
 	collection_t Filter(const TSTR& name, Predicate pred)
 	{
-		if(!m_pRawElement || false == IS_EMPTY(m_strNonExistingParent) || false == m_bValid)
+		if(!m_pRawElement)
 			throw std::runtime_error("Invalid Element");
 
 		collection_t vec;
-		ResolveNullNode(m_strName);
 		NODE_COLLECTION* nodevec = m_pRawElement->GetVec();
 
 		vec.clear();
@@ -261,7 +252,7 @@ public:
 
 				if(nodename==name)
 				{
-					Element ele(static_cast<RawElement*>((*nodevec)[i]), _TS(""), name, true);
+					Element ele(static_cast<RawElement*>((*nodevec)[i]));
 					if(pred(ele))
 						vec.push_back(ele);
 				}
@@ -274,11 +265,10 @@ public:
 	template<typename Predicate>
 	collection_t Sort(const TSTR& name, Predicate predSort) // Note: not an in-place sort!
 	{
-		if(!m_pRawElement || false == IS_EMPTY(m_strNonExistingParent) || false == m_bValid)
+		if(!m_pRawElement)
 			throw std::runtime_error("Invalid Element");
 
 		collection_t vec;
-		ResolveNullNode(m_strName);
 		NODE_COLLECTION* nodevec = m_pRawElement->GetVec();
 
 		vec.clear();
@@ -291,7 +281,7 @@ public:
 
 				if(nodename==name)
 				{
-					Element ele(static_cast<RawElement*>((*nodevec)[i]), _TS(""), name, true);
+					Element ele(static_cast<RawElement*>((*nodevec)[i]));
 					vec.push_back(ele);
 				}
 			}
@@ -304,7 +294,7 @@ public:
 	template<typename Predicate>
 	void InplaceSort(Predicate predSort) // Note: not an in-place sort!
 	{
-		if(!m_pRawElement || false == m_strNonExistingParent.empty() || false == m_bValid)
+		if(!m_pRawElement)
 			throw std::runtime_error("Invalid Element");
 
 		NODE_COLLECTION* nodevec = m_pRawElement->GetVec();
@@ -357,7 +347,7 @@ public:
 	//! Get this Comment collection
 	std::vector<Comment> GetCommentCollection();
 
-	Element operator[](const _ELCHAR* name);
+	Element operator[](const _ELCHAR* name) const;
 
 	bool SetBool(bool val);
 	bool SetChar(char val);
@@ -437,10 +427,7 @@ private:
 	//! @param bMultipleParent returns true if there are more than 1 item in vec
 	static bool SplitString(const TSTR& str, std::vector<TSTR>& vec, bool& bMultipleParent);
 	//! Get Element with this str name
-	Element GetNodeAt(const TSTR& str);
-	//! Try to resolve the null m_ptrNode problem
-	void ResolveNullNode(const TSTR& str);
-	void ResolveNode(const TSTR& str);
+	Element GetNodeAt(const TSTR& str) const;
 	//! Split the src with delimiter ":" into wstrNamespace and wstrName
 	static bool SplitNamespace(const TSTR& src, TSTR& wstrName, TSTR& wstrNamespace);
 	//! Get the attribute value
@@ -454,15 +441,6 @@ private:
 	bool GetAttributeAt(const TSTR& wstrName, TSTR& wstrValue, bool& bExists) const;
 
 protected:
-	//! Delimited string of non existing parent
-	TSTR m_strNonExistingParent;
-	//! Stores the deleted state
-	bool m_bDeleted;
-	//! Node name
-	TSTR m_strName;
-	//! Stores the valid state
-	bool m_bValid;
-
 	RawElement* m_pRawElement;
 
 public:

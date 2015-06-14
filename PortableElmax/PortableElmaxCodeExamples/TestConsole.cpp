@@ -41,7 +41,7 @@ void WriteAttr(std::string& xml)
 	using namespace Elmax;
 	Element root("Products");
 
-	Element elem = root["Product"].Create();
+	Element elem = root.Create("Product");
 	elem.SetAttrInt32("Qty", 1234);
 
 	xml = root.ToPrettyString("    ");
@@ -73,7 +73,7 @@ void WriteComment(std::string& xml)
 	using namespace Elmax;
 	Element root("Products");
 
-	Element elem = root["Product"].Create();
+	Element elem = root.Create("Product");
 	elem.SetAttrInt32("Qty", 1234);
 	elem.AddComment("Qty must not be less than 100");
 
@@ -111,7 +111,7 @@ void WriteCData(std::string& xml)
 	using namespace Elmax;
 	Element root("Products");
 
-	Element elem = root["Product"].Create();
+	Element elem = root.Create("Product");
 	elem.SetAttrInt32("Qty", 1234);
 	elem.AddCData("Hello world!");
 
@@ -164,13 +164,13 @@ void AsCollection()
 	using namespace Elmax;
 	Element root("Products");
 
-	Element elem1 = root["Product"].CreateNew();
+	Element elem1 = root.Create(_TS("Product"));
 	elem1.SetAttrInt32("Qty", 400);
 	elem1.SetString("Shower Cap");
-	Element elem2 = root["Product"].CreateNew();
+	Element elem2 = root.Create(_TS("Product"));
 	elem2.SetAttrInt32("Qty", 600);
 	elem2.SetString("Soap");
-	Element elem3 = root["Product"].CreateNew();
+	Element elem3 = root.Create(_TS("Product"));
 	elem3.SetAttrInt32("Qty", 700);
 	elem3.SetString("Shampoo");
 
@@ -192,13 +192,13 @@ void AsCollectionLambda()
 	using namespace Elmax;
 	Element root("Products");
 
-	Element elem1 = root["Product"].CreateNew();
+	Element elem1 = root.Create(_TS("Product"));
 	elem1.SetAttrInt32("Qty", 400);
 	elem1.SetString("Shower Cap");
-	Element elem2 = root["Product"].CreateNew();
+	Element elem2 = root.Create(_TS("Product"));
 	elem2.SetAttrInt32("Qty", 600);
 	elem2.SetString("Soap");
-	Element elem3 = root["Product"].CreateNew();
+	Element elem3 = root.Create(_TS("Product"));
 	elem3.SetAttrInt32("Qty", 700);
 	elem3.SetString("Shampoo");
 
@@ -223,13 +223,13 @@ void Iterators()
 	using namespace Elmax;
 	Element root("Products");
 
-	Element elem1 = root["Product"].CreateNew();
+	Element elem1 = root.Create(_TS("Product"));
 	elem1.SetAttrInt32("Qty", 400);
 	elem1.SetString("Shower Cap");
-	Element elem2 = root["Product"].CreateNew();
+	Element elem2 = root.Create(_TS("Product"));
 	elem2.SetAttrInt32("Qty", 600);
 	elem2.SetString("Soap");
-	Element elem3 = root["Product"].CreateNew();
+	Element elem3 = root.Create(_TS("Product"));
 	elem3.SetAttrInt32("Qty", 700);
 	elem3.SetString("Shampoo");
 
@@ -251,25 +251,25 @@ void CppLinq()
 	using namespace Elmax;
 	Element root("Bookstore");
 
-	Element Book1 = root["Books|Book"].CreateNew();
+	Element Book1 = root.Create(_TS("Books")).Create(_TS("Book"));
 	Book1.SetAttrInt32("AuthorID", 1255);
 	Book1["Title"].SetString("The Joy Luck Club");
-	Element Book2 = root["Books|Book"].CreateNew();
+	Element Book2 = root.Create(_TS("Books")).Create(_TS("Book"));
 	Book2.SetAttrInt32("AuthorID", 2562);
 	Book2["Title"].SetString("The First Phone Call from Heaven");
-	Element Book3 = root["Books|Book"].CreateNew();
+	Element Book3 = root.Create(_TS("Books")).Create(_TS("Book"));
 	Book3.SetAttrInt32("AuthorID", 3651);
 	Book3["Title"].SetString("David and Goliath");
 
-	Element Author1 = root["Authors|Author"].CreateNew();
+	Element Author1 = root.Create(_TS("Authors")).Create(_TS("Author"));
 	Author1.SetAttrInt32("AuthorID", 1255);
 	Author1["Name"].SetString("Amy Tan");
 	Author1["Gender"].SetString("Female");
-	Element Author2 = root["Authors|Author"].CreateNew();
+	Element Author2 = root.Create(_TS("Authors")).Create(_TS("Author"));
 	Author2.SetAttrInt32("AuthorID", 2562);
 	Author2["Name"].SetString("Mitch Albom");
 	Author2["Gender"].SetString("Male");
-	Element Author3 = root["Authors|Author"].CreateNew();
+	Element Author3 = root.Create(_TS("Authors")).Create(_TS("Author"));
 	Author3.SetAttrInt32("AuthorID", 3651);
 	Author3["Name"].SetString("Malcolm Gladwell");
 	Author3["Gender"].SetString("Male");
@@ -292,7 +292,7 @@ void CppLinq()
 		// Selects the AuthorID on author element to join on
 		[](const Element& a) {return a.GetAttrInt32("AuthorID", -1);},
 		// Gets book title and author name
-		[](Element b, Element a) -> BookInfo
+		[](const Element& b, const Element& a) -> BookInfo
 		{ BookInfo info = {b["Title"].GetString(""), a["Name"].GetString("")}; return info;}
 		)
 		>> to_vector();

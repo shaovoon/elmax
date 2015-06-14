@@ -85,15 +85,17 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb")][_TS("qq")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("qq"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
-			Element elem4 = root[_TS("bb")][_TS("qq")].CreateNew();
+			Element elem4 = elembb.Create(_TS("qq"));
 			elem4.SetInt32(44);
-			Element elem5 = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem5 = elembb.Create(_TS("cc"));
 			elem5.SetInt32(55);
 
 			Element::available_child_t acmap = root[_TS("bb")].QueryChildrenNum();
@@ -121,15 +123,17 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb|qq")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("qq"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb|cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb|cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
-			Element elem4 = root[_TS("bb|qq")].CreateNew();
+			Element elem4 = elembb.Create(_TS("qq"));
 			elem4.SetInt32(44);
-			Element elem5 = root[_TS("bb|cc")].CreateNew();
+			Element elem5 = elembb.Create(_TS("cc"));
 			elem5.SetInt32(55);
 
 			Element::available_child_t acmap = root[_TS("bb")].QueryChildrenNum();
@@ -157,11 +161,13 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb|cc")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("cc"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb|cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb|cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
 
 			Element::collection_t vec = root[_TS("bb")][_TS("cc")].AsCollection();
@@ -195,11 +201,13 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("cc"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
 
 			Element::collection_t vec = root[_TS("bb")][_TS("cc")].AsCollection();
@@ -233,11 +241,13 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb|cc")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("cc"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb|cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb|cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
 
 			Pred pred;
@@ -272,11 +282,13 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb|cc")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("cc"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb|cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb|cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
 
 			Element::collection_t vec = root[_TS("bb")].GetChildren(_TS("cc"));
@@ -310,11 +322,13 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("cc"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb")][_TS("cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
 
 			Element::collection_t vec = root[_TS("bb")].GetChildren(_TS("cc"));
@@ -348,11 +362,13 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb|cc")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("cc"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb|cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb|cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
 
 			Pred pred;
@@ -387,11 +403,13 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb|cc")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("cc"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb|cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb|cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
 
 			Pred pred;
@@ -406,13 +424,14 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb|cc")].Create();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			int dd = 2000000000;
-			elem[_TS("dd")].SetInt32(dd);
-			int dd2 = elem[_TS("dd")].GetInt32(10);
+			elem.SetInt32(dd);
+			int dd2 = elem.GetInt32(10);
 			Assert::AreEqual(dd, dd2);
 
-			Element elemDelete = elem[_TS("dd")];
+			Element elemDelete = elem.Create(_TS("dd"));
+			elemDelete.SetInt32(dd);
 			Assert::IsTrue(elemDelete.Exists());
 			elem.DetachNode(elemDelete);
 
@@ -425,7 +444,6 @@ namespace UnitTestElmax
 			Assert::AreEqual(dd, dd2);
 
 			elem.DetachNode(elemDelete);
-
 			elemDelete.Destroy();
 
 			TSTR file = GetFolderPath() + _TS("DetachAndAddNode.xml");
@@ -435,7 +453,7 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("DetachAndAddNodeCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("bb|cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 
 			dd2 = elem2[_TS("dd")].GetInt32(10);
@@ -449,14 +467,14 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb|cc")].Create();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			int dd = 2000000000;
-			elem[_TS("dd")].SetInt32(dd);
-			int dd2 = elem[_TS("dd")].GetInt32(10);
+			elem.SetInt32(dd);
+			int dd2 = elem.GetInt32(10);
 			Assert::AreEqual(dd, dd2);
 
-			elem[_TS("dd")].Remove();
-			dd2 = elem[_TS("dd")].GetInt32(10);
+			elem.Remove();
+			dd2 = elem.GetInt32(10);
 			Assert::AreEqual(10, dd2);
 
 			TSTR file = GetFolderPath() + _TS("RemoveNode.xml");
@@ -466,10 +484,9 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("RemoveNodeCheck.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("bb|cc")];
-			Assert::IsTrue(elem2.Exists());
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 
-			dd2 = elem2[_TS("dd")].GetInt32(10);
+			dd2 = elem2.GetInt32(10);
 			Assert::AreEqual(10, dd2);
 			root.Destroy();
 			root2.Destroy();
@@ -480,10 +497,10 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem = root[_TS("bb|cc")].CreateNew();
+			Element elem = root.Create(_TS("bb")).Create(_TS("cc"));
 			ELMAX_INT64 dd = 14000000000L;
 			Assert::IsTrue(elem.Exists());
-			elem[_TS("dd")].SetInt64(dd);
+			elem.SetInt64(dd);
 
 			TSTR file = GetFolderPath() + _TS("TestDelimiter1.xml");
 			root.Save(file, FT_UTF8);
@@ -492,10 +509,10 @@ namespace UnitTestElmax
 			root2.Open(file);
 			//root2.Save(GetFolderPath() + _TS("TestDelimiter1Check.xml"), FT_UTF8);
 
-			Element elem2 = root2[_TS("bb|cc")];
+			Element elem2 = root2[_TS("bb")][_TS("cc")];
 			Assert::IsTrue(elem2.Exists());
 
-			ELMAX_INT64 dd2 = elem2[_TS("dd")].GetInt64(10);
+			ELMAX_INT64 dd2 = elem2.GetInt64(10);
 
 			Assert::IsTrue(dd == dd2);
 			root.Destroy();
@@ -507,7 +524,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("cc"));
 
-			Element elem1 = root[_TS("aa")].CreateNew();
+			Element elem1 = root.Create(_TS("aa"));
 			elem1.SetInt32(11);
 
 			bool bExceptionThrown = false;
@@ -533,7 +550,7 @@ namespace UnitTestElmax
 			bExceptionThrown = false;
 			try
 			{
-				Element::collection_t vec2 = root2[_TS("aa")][_TS("bb")].AsCollection();
+				Element::collection_t vec2 = root2[_TS("bb")].AsCollection();
 
 				Assert::AreEqual((size_t)(0), vec2.size());
 			}
@@ -550,7 +567,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb")].CreateNew();
+			Element elem1 = root.Create(_TS("bb"));
 			elem1.SetInt32(11);
 
 			Element::collection_t vec = root[_TS("bb")].GetChildren(_TS("cc"));
@@ -576,7 +593,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("cc"));
 
-			root[_TS("aa")].CreateNew();
+			root.Create(_TS("aa"));
 
 			Element::available_child_t acmap = root[_TS("aa")].QueryChildrenNum();
 
@@ -601,7 +618,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("cc"));
 
-			Element elem1 = root[_TS("aa")].CreateNew();
+			Element elem1 = root.Create(_TS("aa"));
 			elem1.SetInt32(11);
 
 			bool bExceptionThrown = false;
@@ -627,7 +644,7 @@ namespace UnitTestElmax
 			bExceptionThrown = false;
 			try
 			{
-				Element::collection_t vec2 = root2[_TS("aa")][_TS("bb")].GetChildren(_TS("cc"));
+				Element::collection_t vec2 = root2[_TS("bb")].GetChildren(_TS("cc"));
 
 				Assert::AreEqual((size_t)(0), vec2.size());
 			}
@@ -645,7 +662,7 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("cc"));
 
-			root[_TS("aa")].CreateNew();
+			root.Create(_TS("aa"));
 
 			bool bExceptionThrown = false;
 			try
@@ -682,67 +699,19 @@ namespace UnitTestElmax
 			root.Destroy();
 			root2.Destroy();
 		}
-		TEST_METHOD(DoubleRoot)
-		{
-			Assert::FunctionName = __FUNCTION__;
-			using namespace Elmax;
-			Element root(_TS("aa"));
-
-			Element elem1 = root[_TS("aa")].CreateNew();
-			elem1.SetInt32(11);
-
-			TSTR file = GetFolderPath() + _TS("DoubleRoot.xml");
-			root.Save(file, FT_UTF8);
-
-			Element root2;
-			root2.Open(file);
-			//root2.Save(GetFolderPath() + _TS("DoubleRootCheck.xml"), FT_UTF8);
-
-			int x = root2[_TS("aa")].GetInt32(0);
-
-			Assert::AreEqual(x, 11);
-
-			x = root2[_TS("aa")].GetInt32(0);
-
-			Assert::AreEqual(x, 11);
-			root.Destroy();
-			root2.Destroy();
-		}
-		TEST_METHOD(DoubleRoot2)
-		{
-			Assert::FunctionName = __FUNCTION__;
-			using namespace Elmax;
-			Element root(_TS("cc"));
-
-			Element elem1 = root[_TS("aa|bb")].CreateNew();
-			elem1.SetInt32(11);
-
-			// root2 does not have any tag name associated with it.
-			TSTR file = GetFolderPath() + _TS("DoubleRoot2.xml");
-			root.Save(file, FT_UTF8);
-
-			Element root2;
-			root2.Open(file);
-			//root2.Save(GetFolderPath() + _TS("DoubleRoot2Check.xml"), FT_UTF8);
-
-			int x = root2[_TS("cc")][_TS("aa")][_TS("bb")].GetInt32(0);
-
-			Assert::AreEqual(x, 11);
-			root.Destroy();
-			root2.Destroy();
-		}
-
 		TEST_METHOD(Sort)
 		{
 			Assert::FunctionName = __FUNCTION__;
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb|cc")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("cc"));
 			elem1.SetDouble(22.0);
-			Element elem2 = root[_TS("bb|cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetDouble(33.0);
-			Element elem3 = root[_TS("bb|cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetDouble(11.0);
 
 			SortElementPred pred;
@@ -759,13 +728,15 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb|cc")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("cc"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb|cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb|cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
-			Element elem4 = root[_TS("bb|dd")].CreateNew();
+			Element elem4 = elembb.Create(_TS("dd"));
 			elem4.SetInt32(44);
 			root[_TS("bb")].AddComment(_TS("Hello world"));
 
@@ -809,13 +780,15 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb|cc")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("cc"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb|cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb|cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
-			Element elem4 = root[_TS("bb|dd")].CreateNew();
+			Element elem4 = elembb.Create(_TS("dd"));
 			elem4.SetInt32(44);
 			root[_TS("bb")].AddComment(_TS("Hello world"));
 
@@ -858,13 +831,15 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb|cc")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("cc"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb|cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb|cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
-			Element elem4 = root[_TS("bb|dd")].CreateNew();
+			Element elem4 = elembb.Create(_TS("dd"));
 			elem4.SetInt32(44);
 			root[_TS("bb")].AddComment(_TS("Hello world"));
 
@@ -908,13 +883,15 @@ namespace UnitTestElmax
 			using namespace Elmax;
 			Element root(_TS("aa"));
 
-			Element elem1 = root[_TS("bb|cc")].CreateNew();
+			Element elembb = root.Create(_TS("bb"));
+
+			Element elem1 = elembb.Create(_TS("cc"));
 			elem1.SetInt32(11);
-			Element elem2 = root[_TS("bb|cc")].CreateNew();
+			Element elem2 = elembb.Create(_TS("cc"));
 			elem2.SetInt32(22);
-			Element elem3 = root[_TS("bb|cc")].CreateNew();
+			Element elem3 = elembb.Create(_TS("cc"));
 			elem3.SetInt32(33);
-			Element elem4 = root[_TS("bb|dd")].CreateNew();
+			Element elem4 = elembb.Create(_TS("dd"));
 			elem4.SetInt32(44);
 			root[_TS("bb")].AddComment(_TS("Hello world"));
 
@@ -979,12 +956,8 @@ namespace UnitTestElmax
 			std::cout<<"DetachAndAddNode() runs fine!"<<std::endl;
 			RemoveNode();
 			std::cout<<"RemoveNode() runs fine!"<<std::endl;
-			TestDelimiter1();
-			std::cout<<"TestDelimiter1() runs fine!"<<std::endl;
-			TestDelimiter2();
-			std::cout<<"TestDelimiter2() runs fine!"<<std::endl;
-			TestDelimiter3();
-			std::cout<<"TestDelimiter3() runs fine!"<<std::endl;
+			TestDelimiter();
+			std::cout<<"TestDelimiter() runs fine!"<<std::endl;
 			EmptyAsCollection();
 			std::cout<<"EmptyAsCollection() runs fine!"<<std::endl;
 			EmptyGetChildren();
@@ -995,10 +968,6 @@ namespace UnitTestElmax
 			std::cout<<"InvalidElementGetChildren() runs fine!"<<std::endl;
 			InvalidElementQueryChildrenNum();
 			std::cout<<"InvalidElementQueryChildrenNum() runs fine!"<<std::endl;
-			DoubleRoot();
-			std::cout<<"DoubleRoot() runs fine!"<<std::endl;
-			DoubleRoot2();
-			std::cout<<"DoubleRoot2() runs fine!"<<std::endl;
 			Sort();
 			std::cout<<"Sort() runs fine!"<<std::endl;
 			Iterator1();

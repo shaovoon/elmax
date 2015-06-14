@@ -10,18 +10,11 @@ Element Element::NullValue;
 
 
 Element::Element(void)
-	: m_strNonExistingParent(_TS(""))
-	, m_bDeleted(false)
-	, m_bValid(true)
-	, m_pRawElement(NULL)
+	: m_pRawElement(NULL)
 {
 }
 
 Element::Element(const TSTR& name)
-	: m_strNonExistingParent(_TS(""))
-	, m_bDeleted(false)
-	, m_strName(name)
-	, m_bValid(true)
 {
 	m_pRawElement = new RawElement(name);
 }
@@ -29,39 +22,12 @@ Element::Element(const TSTR& name)
 // Non-default constructor
 Element::Element(RawElement* pRawElement)
 {
-	if(pRawElement!=NULL)
-		m_strName = pRawElement->GetName();
-	else
-		m_strName = _TS("");
-	m_strNonExistingParent = _TS("");
-	m_bDeleted=false;
-
-	m_bValid = (pRawElement!=NULL);
 	m_pRawElement = pRawElement;
-}
-
-
-// Non-default constructor
-Element::Element(
-	RawElement* pRawElement,
-	const TSTR& nonExistingParent, 
-	const TSTR& name, 
-	bool bValid)
-: m_strNonExistingParent(nonExistingParent)
-, m_bDeleted(false)
-, m_strName(name)
-, m_bValid(bValid)
-, m_pRawElement(pRawElement)
-{
 }
 
 // Copy constructor
 Element::Element(const Element& other)
-: m_strNonExistingParent(other.m_strNonExistingParent)
-, m_bDeleted(other.m_bDeleted)
-, m_strName(other.m_strName)
-, m_bValid(other.m_bValid)
-, m_pRawElement(other.m_pRawElement)
+: m_pRawElement(other.m_pRawElement)
 {
 
 }
@@ -69,10 +35,6 @@ Element::Element(const Element& other)
 // Assignment operator
 Element& Element::operator=(const Element& other)
 {
-	m_strNonExistingParent = other.m_strNonExistingParent;
-	m_bDeleted = other.m_bDeleted;
-	m_strName = other.m_strName;
-	m_bValid = other.m_bValid;
 	m_pRawElement = other.m_pRawElement;
 
 	return *this;
@@ -95,335 +57,26 @@ void Element::SetNode(RawElement* ptrElement)
 	m_pRawElement = ptrElement;
 }
 
-void Element::ResolveNullNode(const TSTR& str)
+Element Element::GetNodeAt(const TSTR& str) const
 {
-	if(m_pRawElement)
-		return;
+	RawTreeNode* pSrc = m_pRawElement;
+	NODE_COLLECTION* nodevec = pSrc->GetVec();
+	size_t len = nodevec->size();
+	bool found = false;
+	for(size_t j=0; j<len; ++j)
+	{
+		RawTreeNode* pNode = (*nodevec)[j];
 
-	bool multipleParent = false;
-	std::vector<TSTR> vec;
-	TSTR temp = str;
-	TSTR nonExistingParent = _TS("");
-	if(false==IS_EMPTY(m_strNonExistingParent))
-	{
-		temp = m_strNonExistingParent;
-		temp += _TS("|");
-		temp += m_strName;
-	}
-	else
-	{
-		temp = m_strName;
-	}
-	SplitString(temp, vec, multipleParent);
-
-	if(multipleParent)
-	{
-		RawTreeNode* pSrc = m_pRawElement->FindRoot();
-				
-		for(size_t i=0; i<vec.size(); ++i)
+		if(str==pNode->GetName())
 		{
-			// Get the collection from this node
-			// If successful, assign the found node to this element
-			// and find the next element.
-			NODE_COLLECTION* nodevec = pSrc->GetVec();
-			for(size_t j=0; j<nodevec->size(); ++j)
-			{
-				RawTreeNode* pNode = nodevec->at(j);
-				if(pNode && pNode->GetXmlType()==XML_ELEMENT)
-				{
-					if(vec.at(i)==pNode->GetName())
-					{
-						pSrc = pNode;
-
-						if(!m_pRawElement&&vec.at(vec.size()-1)==pNode->GetName())
-						{
-							m_pRawElement = static_cast<RawElement*>(pNode);
-							return;
-						}
-					}
-				}
-			}
+			pSrc = pNode;
+			found = true;
+			break;
 		}
 	}
-	else // if(bMultipleParent==false)
+	if(found)
 	{
-		RawTreeNode* pSrc = m_pRawElement->FindRoot();
-		NODE_COLLECTION* nodevec = pSrc->GetVec();
-		for(size_t j=0; j<nodevec->size(); ++j)
-		{
-			RawTreeNode* pNode = nodevec->at(j);
-			if(pNode)
-			{
-				if(!m_pRawElement)
-				{
-					if(str==pNode->GetName())
-					{
-						pSrc = pNode;
-						if(!m_pRawElement&&m_strName==pNode->GetName())
-						{
-							m_pRawElement = static_cast<RawElement*>(pNode);
-							return;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-void Element::ResolveNode(const TSTR& str)
-{
-	bool bRoot = false;
-
-	bool multipleParent = false;
-	std::vector<TSTR> vec;
-	TSTR temp = str;
-	TSTR nonExistingParent = _TS("");
-	if(false==IS_EMPTY(m_strNonExistingParent))
-	{
-		temp = m_strNonExistingParent;
-		temp += _TS("|");
-		temp += m_strName;
-	}
-	else
-	{
-		temp = m_strName;
-	}
-	SplitString(temp, vec, multipleParent);
-	if(multipleParent)
-	{
-		m_strNonExistingParent = _TS("");
-		for(size_t i=0; i<vec.size()-1; ++i)
-		{
-			m_strNonExistingParent += vec.at(i);
-			if(i!=vec.size()-2)
-				m_strNonExistingParent += _TS("|");
-		}
-		if(vec.size()>0)
-			m_strName = vec.at(vec.size()-1);
-	}
-
-	return;
-	if(multipleParent)
-	{
-		RawTreeNode* pSrc = m_pRawElement->FindRoot();
-
-		size_t i=0;
-		if(bRoot&&vec.size()>0&&vec.at(0)==pSrc->GetName())
-			i = 1;
-
-		bool bFound = false;
-		for(; i<vec.size(); ++i)
-		{
-			// Get the collection from this node
-			// If successful, assign the found node to this element
-			// and find the next element.
-			NODE_COLLECTION* nodevec = pSrc->GetVec();
-			size_t len = nodevec->size();
-			for(size_t j=0; j<len; ++j)
-			{
-				RawTreeNode* pNode = (*nodevec)[j];
-				if(vec.at(i)==pNode->GetName())
-				{
-					pSrc = pNode;
-				}
-			}
-			if(bFound==false)
-				break;
-		}
-		if(bFound)
-		{
-			if(pSrc)
-				m_pRawElement = static_cast<RawElement*>(pSrc);
-		}
-	}
-	else // if(bMultipleParent==false)
-	{
-		RawTreeNode* pSrc = m_pRawElement->FindRoot();
-		if(!pSrc)
-			return;
-		if(bRoot&&vec.size()>0&&vec.at(0)==pSrc->GetName())
-			return;
-
-		NODE_COLLECTION* nodevec = pSrc->GetVec();
-		size_t len = nodevec->size();
-		for(size_t j=0; j<len; ++j)
-		{
-			RawTreeNode* pNode = (*nodevec)[j];
-			if(!m_pRawElement)
-			{
-				if(str==pNode->GetName())
-				{
-					pSrc = pNode;
-					if(m_strName==pNode->GetName())
-					{
-						m_pRawElement = static_cast<RawElement*>(pNode);
-					}
-				}
-			}
-		}
-	}
-}
-
-Element Element::GetNodeAt(const TSTR& str)
-{
-	ResolveNullNode(str);
-	bool bMultipleParent = false;
-	std::vector<TSTR> vec;
-	TSTR temp = str;
-	TSTR wstrNonExistingParent = _TS("");
-	if(false==IS_EMPTY(m_strNonExistingParent))
-	{
-		temp = m_strNonExistingParent;
-		temp += _TS("|");
-		if(IS_EMPTY(m_strName)==false)
-		{
-			temp += m_strName;
-			temp += _TS("|");
-		}
-		temp += str;
-	}
-	else
-	{
-		if(m_pRawElement&&m_strName==m_pRawElement->GetName())
-		{
-			temp = str;
-		}
-		else
-		{
-			if(IS_EMPTY(m_strName)==false)
-			{
-				temp = m_strName;
-				temp += _TS("|");
-				temp += str;
-			}
-			else
-				temp = str;
-		}
-	}
-	SplitString(temp, vec, bMultipleParent);
-
-	if(m_pRawElement)
-	{
-		if(IS_EMPTY(m_strNonExistingParent))
-		{
-			if(bMultipleParent)
-			{
-				RawTreeNode* pSrc = m_pRawElement;
-				bool found = false;
-				size_t i=0;
-				//if(m_strName==m_pRawElement->GetName())
-				//	i = 1;
-				size_t nFound = i;
-				for(; i<vec.size(); ++i)
-				{
-					// Get the collection from this node
-					// If successful, assign the found node to this element
-					// and find the next element.
-					NODE_COLLECTION* nodevec = pSrc->GetVec();
-					size_t len = nodevec->size();
-					for(size_t j=0; j<len; ++j)
-					{
-						RawTreeNode* pNode = (*nodevec)[j];
-						if(vec.at(i)==pNode->GetName())
-						{
-							pSrc = pNode;
-							found = true;
-							++nFound;
-							break;
-						}
-					}
-					if(false==found)
-					{
-						for(;i<vec.size()-1;++i)
-						{
-							if(IS_EMPTY(wstrNonExistingParent)==false)
-								wstrNonExistingParent += _TS("|");
-
-							wstrNonExistingParent += vec.at(i);
-						}
-
-						if(vec.empty()==false)
-							temp = vec.at(vec.size()-1);
-
-						return Element(static_cast<RawElement*>(pSrc), wstrNonExistingParent, temp, false);
-					}
-				}
-				if(found)
-				{
-					for(;i<vec.size()-1;++i)
-					{
-						if(IS_EMPTY(wstrNonExistingParent)==false)
-							wstrNonExistingParent += _TS("|");
-
-						wstrNonExistingParent += vec.at(i);
-					}
-
-					if(vec.empty()==false)
-						temp = vec.at(vec.size()-1);
-
-					bool bValid = false;
-					if(nFound==i)
-						bValid = true;
-
-					return Element(static_cast<RawElement*>(pSrc), wstrNonExistingParent, temp, bValid);
-				}
-			}
-			else // if(bMultipleParent==false)
-			{
-				//if(str==m_pRawElement->GetName())
-				//	return Element(m_pRawElement, wstrNonExistingParent, str, true);
-
-				RawTreeNode* pSrc = m_pRawElement;
-				NODE_COLLECTION* nodevec = pSrc->GetVec();
-				size_t len = nodevec->size();
-				bool found = false;
-				for(size_t j=0; j<len; ++j)
-				{
-					RawTreeNode* pNode = (*nodevec)[j];
-
-					if(str==pNode->GetName())
-					{
-						pSrc = pNode;
-						found = true;
-						break;
-					}
-				}
-				if(false==found)
-				{
-					if(false==IS_EMPTY(m_strNonExistingParent))
-					{
-						wstrNonExistingParent = m_strNonExistingParent;
-						wstrNonExistingParent += _TS("|");
-						wstrNonExistingParent += m_strName;
-					}
-					else
-						wstrNonExistingParent = _TS("");
-
-					return Element(static_cast<RawElement*>(pSrc), wstrNonExistingParent, str, false);
-				}
-				else // if(found)
-				{
-					return Element(static_cast<RawElement*>(pSrc), wstrNonExistingParent, str, true);
-				}
-			}
-		}
-		else // if(false == m_strNonExistingParent.empty())
-		{
-			for(size_t i=0;i<vec.size()-1;++i)
-			{
-				if(IS_EMPTY(wstrNonExistingParent)==false)
-					wstrNonExistingParent += _TS("|");
-
-				wstrNonExistingParent += vec.at(i);
-			}
-
-			return Element(NULL, wstrNonExistingParent, str, false);
-		}
-	}
-	else
-	{
-		throw std::runtime_error("No valid xml document and node in this element!");
+		return Element(static_cast<RawElement*>(pSrc));
 	}
 
 	return Element();
@@ -573,215 +226,41 @@ bool Element::Exists() const
 {
 	if(!m_pRawElement)
 		return false;
-	else if(false==m_bValid)
-		return false;
-	else if(GET_SIZE(m_strNonExistingParent)>0)
-		return false;
 
 	return true;
 }
 
-Element Element::Create(const TSTR& namespaceUri)
+Element Element::Create(const TSTR& name, const TSTR& namespaceUri)
 {
-	ResolveNode(m_strName);
-	if(m_pRawElement)
+	RawElement* pNew = new RawElement(name);
+	if (m_pRawElement)
 	{
-		if(IS_EMPTY(m_strNonExistingParent) && m_strName==m_pRawElement->GetName() && m_bValid)
-			return *this;
+		m_pRawElement->Add(pNew);
 	}
-
-	using namespace std;
-	bool bMultipleParent = false;
-	vector<TSTR> vec;
-	TSTR wstrNonExistingParent = m_strNonExistingParent;
-	wstrNonExistingParent += _TS("|");
-
-	wstrNonExistingParent += m_strName;
-	if(wstrNonExistingParent==_TS("|"))
-		wstrNonExistingParent=_TS("");
-
-	SplitString(wstrNonExistingParent, vec, bMultipleParent);
-
-	TSTR namespaceUriTemp = _TS("");
-	if(false==IS_EMPTY(wstrNonExistingParent))
-	{
-		if(m_pRawElement)
-		{
-			for(size_t i=0; i<vec.size(); ++i)
-			{
-				if(i==vec.size()-1)
-					namespaceUriTemp = namespaceUri;
-
-				RawElement* pNew = new RawElement(vec.at(i));
-				m_pRawElement->Add(pNew);
-
-				m_pRawElement = pNew;
-				m_bValid = true;
-			}
-			m_bDeleted = false;
-			m_strNonExistingParent = _TS("");
-		}
-		else if(!m_pRawElement)
-		{
-			for(size_t i=0; i<vec.size(); ++i)
-			{
-				if(i==vec.size()-1)
-					namespaceUriTemp = namespaceUri;
-				if(!m_pRawElement)
-				{
-					m_pRawElement = new RawElement(vec.at(i));
-
-					m_bValid = true;
-				}
-				else
-				{
-					RawElement* pNew = new RawElement(vec.at(i));
-
-					if(pNew&&m_pRawElement)
-					{
-						m_pRawElement->Add(pNew);
-						m_pRawElement = pNew;
-						m_bValid = true;
-					}
-				}
-
-			}
-			m_bDeleted = false;
-			m_strNonExistingParent = _TS("");
-		}
-		else
-			throw std::runtime_error("No valid xml document and node in this element!");
-	}
-	else // if(wstrNonExistingParent.empty())
-	{
-		if(m_pRawElement)
-		{
-			if(m_strName==m_pRawElement->GetName())
-				return *this;
-			else
-			{
-				RawElement* pNew = new RawElement(m_strName);
-
-				m_pRawElement->Add(pNew);
-				m_pRawElement = pNew;
-				m_bValid = true;
-				m_bDeleted = false;
-				m_strNonExistingParent = _TS("");
-			}
-		}
-		else if(!m_pRawElement)
-		{
-			m_pRawElement = new RawElement(m_strName);
-
-			m_bValid = true;
-		}
-		else
-		{
-			RawElement* pNew = new RawElement(m_strName);
-
-			if(pNew&&m_pRawElement)
-			{
-				m_pRawElement->Add(pNew);
-				m_pRawElement = pNew;
-
-				m_bValid = true;
-			}
-
-			m_bDeleted = false;
-			m_strNonExistingParent = _TS("");
-		}
-	}
-
-	return *this;
-}
-
-Element Element::CreateNew(const TSTR& namespaceUri)
-{
-	ResolveNode(m_strName);
-	if(false==IS_EMPTY(m_strNonExistingParent)||false==m_bValid)
-	{
-		return Create(namespaceUri);
-	}
-	else // if(m_strNonExistingParent.empty())
-	{
-		if(m_pRawElement)
-		{
-			RawElement* pNew = new RawElement(m_pRawElement->GetName());
-
-			RawElement* parent = static_cast<RawElement*>(m_pRawElement->GetParent());
-			if(parent)
-			{
-				//RawElement* root = m_pRawElement->FindElementRoot();
-				//if (parent != root || (parent == root && !root))
-				//{
-					parent->Add(pNew);
-					m_pRawElement = pNew;
-
-					m_bDeleted = false;
-					m_bValid = true;
-
-					return *this;
-				//}
-
-				//return Element();
-			}
-			else
-				throw std::runtime_error("No valid parent found!");
-		}
-		else if(!m_pRawElement)
-		{
-			m_pRawElement = new RawElement(m_strName);
-			m_bValid = true;
-
-			m_bDeleted = false;
-			return *this;
-		}
-		else
-			throw std::runtime_error("No valid xml document and node in this element!");
-	}
-
-	// will not come here
-	throw std::runtime_error("No valid xml document and node in this element!");
-	return Element();
+	return Element(pNew);
 }
 
 bool Element::AddNode(Element& node)
 {
-	if(false==IS_EMPTY(m_strNonExistingParent)||false==m_bValid)
-	{
-		throw std::runtime_error("Invalid element");
-	}
-
 	if(m_pRawElement)
 	{
 		if(node.m_pRawElement)
 		{
 			m_pRawElement->Add(node.m_pRawElement);
-			node.m_bDeleted = false;
 			return true;
 		}
-		else
-			return false;
 	}
-
-	throw std::runtime_error("No valid xml document and node in this element!");
 
 	return false;
 }
 
 bool Element::RemoveNode(Element& node)
 {
-	if(false==IS_EMPTY(m_strNonExistingParent)||false==m_bValid||node.m_bDeleted)
-	{
-		throw std::runtime_error("Invalid element");
-	}
-
 	if(m_pRawElement)
 	{
 		if(node.m_pRawElement)
 		{
 			node.m_pRawElement->DetachAndDelete();
-			node.m_bDeleted = true;
 			return true;
 		}
 		else
@@ -795,11 +274,6 @@ bool Element::RemoveNode(Element& node)
 
 bool Element::Remove()
 {
-	if(false==IS_EMPTY(m_strNonExistingParent)||false==m_bValid||m_bDeleted)
-	{
-		throw std::runtime_error("Invalid element");
-	}
-
 	if(m_pRawElement)
 	{
 		RawTreeNode* parent = m_pRawElement->GetParent();
@@ -807,7 +281,8 @@ bool Element::Remove()
 		{
 			this->m_pRawElement->DetachAndDelete();
 
-			this->m_bDeleted = true;
+			this->m_pRawElement = NULL;
+
 			return true;
 		}
 		else
@@ -820,11 +295,6 @@ bool Element::Remove()
 
 bool Element::DetachNode(Element& node)
 {
-	if(false==IS_EMPTY(m_strNonExistingParent)||false==m_bValid||node.m_bDeleted)
-	{
-		throw std::runtime_error("Invalid element");
-	}
-
 	if(m_pRawElement)
 	{
 		if(node.m_pRawElement)
@@ -832,22 +302,13 @@ bool Element::DetachNode(Element& node)
 			node.m_pRawElement->Detach();
 			return true;
 		}
-		else
-			throw std::runtime_error("Invalid child node!");
 	}
-
-	throw std::runtime_error("No valid xml document and node in this element!");
 
 	return false;
 }
 
 bool Element::Detach()
 {
-	if(false==IS_EMPTY(m_strNonExistingParent)||false==m_bValid||m_bDeleted)
-	{
-		throw std::runtime_error("Invalid element");
-	}
-
 	if(m_pRawElement)
 	{
 		RawTreeNode* parent = m_pRawElement->GetParent();
@@ -867,11 +328,10 @@ bool Element::Detach()
 
 Element::collection_t Element::AsCollection()
 {
-	if(!m_pRawElement || false == IS_EMPTY(m_strNonExistingParent) || false == m_bValid)
+	if(!m_pRawElement)
 		throw std::runtime_error("Invalid Element");
 
 	collection_t vec;
-	ResolveNullNode(m_strName);
 	RawTreeNode* parent = m_pRawElement->GetParent();
 	if(!parent)
 		return vec;
@@ -888,7 +348,7 @@ Element::collection_t Element::AsCollection()
 
 			if(name==m_pRawElement->GetName())
 			{
-				Element ele(static_cast<RawElement*>((*nodevec)[i]), _TS(""), m_strName, true);
+				Element ele(static_cast<RawElement*>((*nodevec)[i]));
 				vec.push_back(ele);
 			}
 		}
@@ -899,11 +359,10 @@ Element::collection_t Element::AsCollection()
 
 Element::collection_t Element::GetChildren(const TSTR& name)
 {
-	if(!m_pRawElement || false == IS_EMPTY(m_strNonExistingParent) || false == m_bValid)
+	if(!m_pRawElement)
 		throw std::runtime_error("Invalid Element");
 
 	collection_t vec;
-	ResolveNullNode(m_strName);
 	NODE_COLLECTION* nodevec = m_pRawElement->GetVec();
 
 	vec.clear();
@@ -916,7 +375,7 @@ Element::collection_t Element::GetChildren(const TSTR& name)
 
 			if(nodename==name)
 			{
-				Element ele(static_cast<RawElement*>((*nodevec)[i]), _TS(""), name, true);
+				Element ele(static_cast<RawElement*>((*nodevec)[i]));
 				vec.push_back(ele);
 			}
 		}
@@ -927,7 +386,7 @@ Element::collection_t Element::GetChildren(const TSTR& name)
 
 ATTR_MAP_COLLECTION* Element::GetAttributeCollection()
 {
-	if(!m_pRawElement || false == IS_EMPTY(m_strNonExistingParent) || false == m_bValid)
+	if(!m_pRawElement)
 		throw std::runtime_error("Invalid Element");
 
 	return m_pRawElement->GetAttrs()->GetInternalMap();
@@ -935,7 +394,7 @@ ATTR_MAP_COLLECTION* Element::GetAttributeCollection()
 
 Element::available_child_t Element::QueryChildrenNum()
 {
-	if(!m_pRawElement || false == IS_EMPTY(m_strNonExistingParent) || false == m_bValid)
+	if(!m_pRawElement)
 		throw std::runtime_error("Invalid Element");
 
 	Element::available_child_t children;
@@ -966,7 +425,7 @@ Element::available_child_t Element::QueryChildrenNum()
 	return children;
 }
 
-Element Element::operator[](const _ELCHAR* name)
+Element Element::operator[](const _ELCHAR* name) const
 {
 	return GetNodeAt(name);
 }
@@ -1226,11 +685,6 @@ bool Element::SetDouble(double val)
 
 bool Element::SetString(const TSTR& val)
 {
-	if(false==IS_EMPTY(m_strNonExistingParent)||false==m_bValid)
-	{
-		*this = CreateNew();
-	}
-
 	if(m_pRawElement)
 	{
 		m_pRawElement->SetValue(val);
@@ -1273,9 +727,6 @@ bool Element::SetHex(unsigned int val, bool bAddPrefix)
 
 bool Element::GetString(const TSTR& defaultVal, TSTR& val) const
 {
-	if(false==IS_EMPTY(m_strNonExistingParent)||false==m_bValid)
-		return false;
-
 	if(m_pRawElement)
 	{
 		val = m_pRawElement->GetValue();
@@ -1663,20 +1114,17 @@ unsigned int Element::ReadHex(unsigned int defaultVal) const
 
 bool Element::AddCData(const TSTR& data)
 {
-	if(!m_pRawElement||false==IS_EMPTY(m_strNonExistingParent)||false==m_bValid)
+	if(!m_pRawElement)
 	{
 		throw std::runtime_error("Invalid Element");
 	}
-	else // if(m_strNonExistingParent.empty())
+	else 
 	{
-		if(m_pRawElement)
-		{
-			RawCData* cdata = new RawCData(data);
-			cdata->SetParent(m_pRawElement);
-			m_pRawElement->GetVec()->push_back(cdata);
+		RawCData* cdata = new RawCData(data);
+		cdata->SetParent(m_pRawElement);
+		m_pRawElement->GetVec()->push_back(cdata);
 
-			return true;
-		}
+		return true;
 	}
 
 	return false;
@@ -1698,7 +1146,7 @@ bool Element::DeleteAllCData()
 std::vector<CData> Element::GetCDataCollection()
 {
 	std::vector<CData> vec;
-	if(!m_pRawElement||false==IS_EMPTY(m_strNonExistingParent)||false==m_bValid)
+	if(!m_pRawElement)
 		throw std::runtime_error("Invalid Element");
 
 	NODE_COLLECTION* nodevec = m_pRawElement->GetVec();
@@ -1719,11 +1167,11 @@ std::vector<CData> Element::GetCDataCollection()
 
 bool Element::AddComment(const TSTR& comment)
 {
-	if(!m_pRawElement||false==IS_EMPTY(m_strNonExistingParent)||false==m_bValid)
+	if(!m_pRawElement)
 	{
 		throw std::runtime_error("Invalid Element");
 	}
-	else // if(m_strNonExistingParent.empty())
+	else 
 	{
 		if(m_pRawElement)
 		{
@@ -1754,7 +1202,7 @@ bool Element::DeleteAllComments()
 std::vector<Comment> Element::GetCommentCollection()
 {
 	std::vector<Comment> vec;
-	if(!m_pRawElement||false==IS_EMPTY(m_strNonExistingParent)||false==m_bValid)
+	if(!m_pRawElement)
 		throw std::runtime_error("Invalid Element");
 
 	if(m_pRawElement)
@@ -1877,11 +1325,6 @@ void Element::Destroy()
 	{
 		m_pRawElement->Destroy();
 		m_pRawElement = NULL;
-
-		m_strNonExistingParent = _TS("");
-		m_bDeleted = true;
-		m_strName = _TS("");
-		m_bValid = false;
 	}
 }
 
