@@ -1,18 +1,47 @@
-*.ncb
-*BuildLog.htm
-*.bak
-*.vcproj.*.user
-*.vcproj.user
-*.vcxproj.user
-*.vcxproj.filters
-*.suo
-*.o
-*.a
-*.sdf
-*.opensdf
+# Prerequisites
+*.d
 
-[dD]ebug/
-[rR]elease/
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+*.sdf
+*.pdb
+*.ipdb
+*.iobj
+*.ilk
+*.db
+*.suo
+*.VC
+README.txt
+
+.vs
 */[dD]ebug/
 */[rR]elease/
 */*/[dD]ebug/
@@ -21,4 +50,10 @@
 */*/*/[rR]elease/
 */ipch/
 */*/ipch/
+*/*/bin/
+*/*/obj/
 
+*.ipch
+*.db-wal
+*.db-shm
+*.ide
