@@ -56,7 +56,14 @@ void Element::SetNode(RawElement* ptrElement)
 
 Element Element::GetNodeAt(const TSTR& str) const
 {
+	// added by pja
+	// previously there was no check for a NULL pointer
+	if (!m_pRawElement)
+		throw std::runtime_error("Invalid Element");
+	// end added by pja
+
 	RawTreeNode* pSrc = m_pRawElement;
+
 	NODE_COLLECTION* nodevec = pSrc->GetVec();
 	size_t len = nodevec->size();
 	bool found = false;
@@ -1971,4 +1978,57 @@ bool Element::GetAttributeAt(const TSTR& name, TSTR& val, bool& bExists) const
 	}
 
 	return false;
+}
+
+// Added by pja - not sure why this was not here?
+bool Element::DeleteCData(size_t Index)
+{
+	std::vector<CData> vec = GetCDataCollection();
+
+	size_t vecsize = vec.size();
+
+	if (vecsize == 0)
+		return false;
+
+	if (Index > vecsize)
+		return false;
+
+	vec.at(Index).Remove();
+
+	return true;
+}
+
+// added by pja - not sure why this was not here??
+bool Element::DeleteComment(size_t Index)
+{
+	std::vector<Comment> vec = GetCommentCollection();
+
+	size_t vecsize = vec.size();
+
+	if (vecsize == 0)
+		return false;
+
+	if (Index > vecsize)
+		return false;
+
+	vec.at(Index).Remove();
+
+	return true;
+}
+
+// Get the first child element with the given name
+// Create the element and add it to the children if it does not exist
+Element Element::GetChildElement(const TSTR& name)
+{
+	if (!m_pRawElement)
+		throw std::runtime_error("Invalid Element");
+
+	Element ChildElement = GetNodeAt(name);
+
+	if (!ChildElement.Exists())
+	{
+		ChildElement = Create(name);
+	}
+
+	return ChildElement;
 }

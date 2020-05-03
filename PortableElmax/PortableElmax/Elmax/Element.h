@@ -163,6 +163,8 @@ namespace Elmax
 		bool RemoveNode(Element& node);
 		//! Delete this node (node cannot be reused)
 		bool Remove();
+		// Get the first child element with 'name'; create it if not present
+		Element GetChildElement(const TSTR& name);
 
 		//! Delete this child node (node cannot be reused)
 		bool DetachNode(Element& node);
