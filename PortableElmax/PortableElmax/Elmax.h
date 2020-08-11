@@ -45,6 +45,14 @@
 #		pragma comment(lib, "../Release/PortableElmax_VS2013.lib")
 #		pragma comment(lib, "../Release/FileIO_VS2013.lib")
 #	endif
+#else
+#	ifdef _DEBUG
+#		pragma comment(lib, "../Debug/PortableElmaxD.lib")
+#		pragma comment(lib, "../Debug/FileIO.lib")
+#	else 
+#		pragma comment(lib, "../Release/PortableElmax.lib")
+#		pragma comment(lib, "../Release/FileIO.lib")
+#   endif
 #endif
 
 #include "Elmax/CData.h"

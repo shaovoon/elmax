@@ -319,10 +319,11 @@ bool RawElement::PrettyTraverse(RawTreeNode& node, TEXT_WRITER& uf, size_t cnt, 
 	{
 		TSTR name = node.GetName();
 		TSTR val = node.GetValue();
-
+		bool write_start_element = false;
 		if(IS_EMPTY(name)==false)
 		{
 			WriteStartElement(uf, cnt, name, indent);
+			write_start_element = true;
 		}
 
 		bool textValueWritten = false;
@@ -350,7 +351,7 @@ bool RawElement::PrettyTraverse(RawTreeNode& node, TEXT_WRITER& uf, size_t cnt, 
 		}
 
 		bool closed = false;
-		if ((attrOnly||node.GetVec()->size()==0)&&IS_EMPTY(val))
+		if (write_start_element && ((attrOnly||node.GetVec()->size()==0)&&IS_EMPTY(val)))
 		{
 			uf.Write(_TS("/>\n"));
 			attrWritten = true;
@@ -360,7 +361,7 @@ bool RawElement::PrettyTraverse(RawTreeNode& node, TEXT_WRITER& uf, size_t cnt, 
 		{
 			uf.Write(_TS(">"));
 		}
-		else
+		else if(write_start_element)
 		{
 			uf.Write(_TS(">\n"));
 		}

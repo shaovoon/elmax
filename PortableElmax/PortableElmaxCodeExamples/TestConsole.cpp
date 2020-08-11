@@ -273,6 +273,25 @@ void CppLinq()
 	{
 		std::cout << result[i].title << " is written by " << result[i].author << std::endl;
 	}
+	TSTR File = "c:\\temp\\Test.xml";
+	root.PrettySave(File, FT_UTF8, "  ");
+}
+
+void TestPrettyPrint()
+{
+	Elmax::RootElement Root;
+	TSTR File = "c:\\temp\\Test.xml";
+	try
+	{
+		Root.Open(File);
+	}
+	catch (std::exception&)
+	{
+		// open failed, use default;
+	}
+
+	Root.GetChildElement("Data").SetString("Test");
+	Root.PrettySave(File, FT_UTF8, "  ");
 }
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -296,8 +315,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//AsCollectionLambda();
 	//Iterators();
 
-	CppLinq();
-
+	//CppLinq();
+	TestPrettyPrint();
 	return 0;
 }
 
