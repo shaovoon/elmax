@@ -50,7 +50,7 @@ void WriteAttr(std::string& xml)
 void ReadAttr(const std::string& xml)
 {
 	using namespace Elmax;
-	Element root;
+	RootElement root;
 	root.ParseXMLString(xml);
 
 	Element elem = root["Product"];
@@ -77,7 +77,7 @@ void WriteComment(std::string& xml)
 void ReadComment(const std::string& xml)
 {
 	using namespace Elmax;
-	Element root;
+	RootElement root;
 	root.ParseXMLString(xml);
 
 	Element elem = root["Product"];
@@ -109,7 +109,7 @@ void WriteCData(std::string& xml)
 void ReadCData(const std::string& xml)
 {
 	using namespace Elmax;
-	Element root;
+	RootElement root;
 	root.ParseXMLString(xml);
 
 	Element elem = root["Product"];
@@ -296,26 +296,26 @@ void TestPrettyPrint()
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	//std::string xml;
-	//WriteElement(xml);
-	//ReadElement(xml);
+	std::string xml;
+	WriteElement(xml);
+	ReadElement(xml);
 
-	//WriteAttr(xml);
-	//ReadAttr(xml);
+	WriteAttr(xml);
+	ReadAttr(xml);
 
-	//WriteComment(xml);
-	//ReadComment(xml);
+	WriteComment(xml);
+	ReadComment(xml);
 
-	//WriteCData(xml);
-	//ReadCData(xml);
+	WriteCData(xml);
+	ReadCData(xml);
 
-	//NamespaceUri();
+	NamespaceUri();
 
-	//AsCollection();
-	//AsCollectionLambda();
-	//Iterators();
+	AsCollection();
+	AsCollectionLambda();
+	Iterators();
 
-	//CppLinq();
+	CppLinq();
 	TestPrettyPrint();
 	return 0;
 }
