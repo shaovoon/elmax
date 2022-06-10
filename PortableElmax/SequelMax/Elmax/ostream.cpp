@@ -13,18 +13,18 @@ ostream& ostream::operator <<(char val)
 {
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += temp.c_str();
 	#endif
 #else
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		m_str += boost::lexical_cast<std::string>(val);
+		m_str += std::to_string(val);
 	#endif
 #endif
 
@@ -34,18 +34,18 @@ ostream& ostream::operator <<(short val)
 {
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += temp.c_str();
 	#endif
 #else
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		m_str += boost::lexical_cast<std::string>(val);
+		m_str += std::to_string(val);
 	#endif
 #endif
 	return *this;
@@ -54,18 +54,18 @@ ostream& ostream::operator <<(int val)
 {
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += temp.c_str();
 	#endif
 #else
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		m_str += boost::lexical_cast<std::string>(val);
+		m_str += std::to_string(val);
 	#endif
 #endif
 	return *this;
@@ -74,18 +74,18 @@ ostream& ostream::operator <<(ELMAX_INT64 val)
 {
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += temp.c_str();
 	#endif
 #else
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		m_str += boost::lexical_cast<std::string>(val);
+		m_str += std::to_string(val);
 	#endif
 #endif
 	return *this;
@@ -94,18 +94,18 @@ ostream& ostream::operator <<(unsigned char val)
 {
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += temp.c_str();
 	#endif
 #else
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		m_str += boost::lexical_cast<std::string>(val);
+		m_str += std::to_string(val);
 	#endif
 #endif
 	return *this;
@@ -114,18 +114,18 @@ ostream& ostream::operator <<(unsigned short val)
 {
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += temp.c_str();
 	#endif
 #else
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		m_str += boost::lexical_cast<std::string>(val);
+		m_str += std::to_string(val);
 	#endif
 #endif
 	return *this;
@@ -134,18 +134,18 @@ ostream& ostream::operator <<(unsigned int val)
 {
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += temp.c_str();
 	#endif
 #else
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		m_str += boost::lexical_cast<std::string>(val);
+		m_str += std::to_string(val);
 	#endif
 #endif
 	return *this;
@@ -154,18 +154,18 @@ ostream& ostream::operator <<(unsigned ELMAX_INT64 val)
 {
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += temp.c_str();
 	#endif
 #else
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		m_str += boost::lexical_cast<std::string>(val);
+		m_str += std::to_string(val);
 	#endif
 #endif
 	return *this;
@@ -174,18 +174,18 @@ ostream& ostream::operator <<(float val)
 {
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += temp.c_str();
 	#endif
 #else
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		m_str += boost::lexical_cast<std::string>(val);
+		m_str += std::to_string(val);
 	#endif
 #endif
 	return *this;
@@ -194,18 +194,18 @@ ostream& ostream::operator <<(double val)
 {
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += temp.c_str();
 	#endif
 #else
 	#if defined ELMAX_USE_UNICODE
-		std::string temp = boost::lexical_cast<std::string>(val);
+		std::string temp = std::to_string(val);
 		m_str += conv_to_wstring(temp);
 	#else
-		m_str += boost::lexical_cast<std::string>(val);
+		m_str += std::to_string(val);
 	#endif
 #endif
 	return *this;

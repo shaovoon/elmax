@@ -1,7 +1,6 @@
 #include "RawElement.h"
 #include <vector>
 #include <iostream>
-#include <boost/lexical_cast.hpp>
 #include "../Utils/StrConv.h"
 
 using namespace SequelMax;

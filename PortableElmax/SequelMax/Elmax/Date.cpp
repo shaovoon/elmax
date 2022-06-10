@@ -1,6 +1,5 @@
 #include "Date.h"
 #include <cstdio>
-#include <boost/lexical_cast.hpp>
 #include "../Utils/StrConv.h"
 
 using namespace SequelMax;
@@ -110,9 +109,9 @@ void Date::SetString(const TSTR& strDate)
 	}
 
 #ifdef ELMAX_USE_UNICODE
-	short nYear = boost::lexical_cast<short>(StrConv::ConvToAString(year));
+	short nYear = static_cast<short>(std::stoi(StrConv::ConvToAString(year)));
 #else
-	short nYear = boost::lexical_cast<short>(year);
+	short nYear = static_cast<short>(std::stoi(year));
 #endif // ELMAX_USE_UNICODE
 
 
@@ -128,9 +127,9 @@ void Date::SetString(const TSTR& strDate)
 	}
 
 #ifdef ELMAX_USE_UNICODE
-	short nMonth = boost::lexical_cast<short>(StrConv::ConvToAString(month));
+	short nMonth = static_cast<short>(std::stoi(StrConv::ConvToAString(month)));
 #else
-	short nMonth = boost::lexical_cast<short>(month);
+	short nMonth = static_cast<short>(std::stoi(month));
 #endif // ELMAX_USE_UNICODE
 
 	TSTR monthday = _TS("");
@@ -145,9 +144,9 @@ void Date::SetString(const TSTR& strDate)
 	}
 
 #ifdef ELMAX_USE_UNICODE
-	short nMonthDay = boost::lexical_cast<short>(StrConv::ConvToAString(monthday));
+	short nMonthDay = static_cast<short>(std::stoi(StrConv::ConvToAString(monthday)));
 #else
-	short nMonthDay = boost::lexical_cast<short>(monthday);
+	short nMonthDay = static_cast<short>(std::stoi(monthday));
 #endif // ELMAX_USE_UNICODE
 
 
@@ -163,7 +162,7 @@ TSTR Date::GetString() const
 
 TSTR Date::ShortToStr(short n, int chars)
 {
-	std::string str = boost::lexical_cast<std::string>(n);
+	std::string str = std::to_string(n);
 
 	if(chars==2)
 	{

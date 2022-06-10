@@ -1,5 +1,4 @@
 #include "../Utils/StrUtil.h"
-#include <boost/lexical_cast.hpp>
 
 using namespace Elmax;
 

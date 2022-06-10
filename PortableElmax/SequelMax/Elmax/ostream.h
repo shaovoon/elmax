@@ -2,7 +2,6 @@
 
 #include <string>
 #include "../Configuration/Configuration.h"
-#include <boost/lexical_cast.hpp>
 
 namespace SequelMax
 {

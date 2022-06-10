@@ -5,7 +5,6 @@
 #endif
 
 #include "../Configuration/Configuration.h"
-#include <boost/lexical_cast.hpp>
 
 namespace SequelMax
 {
@@ -44,13 +43,19 @@ private:
 			if(split_at_a_time(result))
 			{
 				std::string temp = conv_to_astring(result);
-				val = boost::lexical_cast<T>(temp);
+
+				std::stringstream ss;
+				ss << temp;
+				ss >> val;
 			}
 		}
 		else
 		{
 			std::string temp = conv_to_astring(m_str);
-			val = boost::lexical_cast<T>(temp);
+			std::stringstream ss;
+			ss << temp;
+			ss >> val;
+
 			m_str = _TS("");
 		}
 	}

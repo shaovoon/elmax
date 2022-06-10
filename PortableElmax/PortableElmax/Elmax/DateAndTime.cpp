@@ -1,7 +1,6 @@
 #include "DateAndTime.h"
 #include <stdexcept>
 #include <cstdio>
-#include <boost/lexical_cast.hpp>
 #include "../Utils/StrConv.h"
 
 using namespace Elmax;
@@ -134,9 +133,9 @@ void DateAndTime::SetString(const TSTR& strDate)
 	}
 
 #ifdef ELMAX_USE_UNICODE
-	short nYear = boost::lexical_cast<short>(StrConv::ConvToAString(year));
+	short nYear = static_cast<short>(std::stoi(StrConv::ConvToAString(year)));
 #else
-	short nYear = boost::lexical_cast<short>(year);
+	short nYear = static_cast<short>(std::stoi(year));
 #endif // ELMAX_USE_UNICODE
 
 	TSTR month = _TS("");
@@ -151,9 +150,9 @@ void DateAndTime::SetString(const TSTR& strDate)
 	}
 
 #ifdef ELMAX_USE_UNICODE
-	short nMonth = boost::lexical_cast<short>(StrConv::ConvToAString(month));
+	short nMonth = static_cast<short>(std::stoi(StrConv::ConvToAString(month)));
 #else
-	short nMonth = boost::lexical_cast<short>(month);
+	short nMonth = static_cast<short>(std::stoi(month));
 #endif // ELMAX_USE_UNICODE
 
 	TSTR monthday = _TS("");
@@ -168,9 +167,9 @@ void DateAndTime::SetString(const TSTR& strDate)
 	}
 
 #ifdef ELMAX_USE_UNICODE
-	short nMonthDay = boost::lexical_cast<short>(StrConv::ConvToAString(monthday));
+	short nMonthDay = static_cast<short>(std::stoi(StrConv::ConvToAString(monthday)));
 #else
-	short nMonthDay = boost::lexical_cast<short>(monthday);
+	short nMonthDay = static_cast<short>(std::stoi(monthday));
 #endif // ELMAX_USE_UNICODE
 
 	TSTR hour = _TS("");
@@ -185,9 +184,9 @@ void DateAndTime::SetString(const TSTR& strDate)
 	}
 
 #ifdef ELMAX_USE_UNICODE
-	short nHour = boost::lexical_cast<short>(StrConv::ConvToAString(hour));
+	short nHour = static_cast<short>(std::stoi(StrConv::ConvToAString(hour)));
 #else
-	short nHour = boost::lexical_cast<short>(hour);
+	short nHour = static_cast<short>(std::stoi(hour));
 #endif // ELMAX_USE_UNICODE
 
 	TSTR minute = _TS("");
@@ -202,9 +201,9 @@ void DateAndTime::SetString(const TSTR& strDate)
 	}
 
 #ifdef ELMAX_USE_UNICODE
-	short nMinute = boost::lexical_cast<short>(StrConv::ConvToAString(minute));
+	short nMinute = static_cast<short>(std::stoi(StrConv::ConvToAString(minute)));
 #else
-	short nMinute = boost::lexical_cast<short>(minute);
+	short nMinute = static_cast<short>(std::stoi(minute));
 #endif // ELMAX_USE_UNICODE
 
 	TSTR second = _TS("");
@@ -219,9 +218,9 @@ void DateAndTime::SetString(const TSTR& strDate)
 	}
 
 #ifdef ELMAX_USE_UNICODE
-	short nSecond = boost::lexical_cast<short>(StrConv::ConvToAString(second));
+	short nSecond = static_cast<short>(std::stoi(StrConv::ConvToAString(second)));
 #else
-	short nSecond = boost::lexical_cast<short>(second);
+	short nSecond = static_cast<short>(std::stoi(second));
 #endif // ELMAX_USE_UNICODE
 
 	SetDateTime(nYear, nMonth, nMonthDay, nHour, nMinute, nSecond);
@@ -237,7 +236,7 @@ TSTR DateAndTime::GetString() const
 
 TSTR DateAndTime::ShortToStr(short n, int chars)
 {
-	std::string str = boost::lexical_cast<std::string>(n);
+	std::string str = std::to_string(n);
 
 	if(chars==2)
 	{

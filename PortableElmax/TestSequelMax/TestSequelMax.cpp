@@ -4,8 +4,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <boost/lexical_cast.hpp>
 #include <boost/bind.hpp>
+#define ELMAX_USE_UNICODE
 #include "../SequelMax/SequelMax.h"
 
 #ifdef _MICROSOFT
@@ -58,9 +58,9 @@ void ReadGender(const TSTR& text, std::vector<Employee>& vec)
 void ReadSalary(const TSTR& text, std::vector<Employee>& vec)
 {
 	#ifdef ELMAX_USE_UNICODE
-		vec.back().Salary = boost::lexical_cast<int>(conv_to_astring(text));
+		vec.back().Salary = std::stoi(conv_to_astring(text));
 	#else
-		vec.back().Salary = boost::lexical_cast<int>(GET_CONST_PTR(text));
+		vec.back().Salary = std::stoi(GET_CONST_PTR(text));
 	#endif
 }
 void ReadComment(const TSTR& text, std::vector<Employee>& vec)
@@ -101,9 +101,9 @@ bool ReadDoc(const TSTR& file, std::vector<Employee>& vec)
 	});
 	doc.RegisterEndElementFunctor(_TS("Employees|Employee|Salary"), [&vec](const TSTR& text)->void {
 #ifdef ELMAX_USE_UNICODE
-		vec.back().Salary = boost::lexical_cast<int>(conv_to_astring(text));
+		vec.back().Salary = std::stoi(conv_to_astring(text));
 #else
-		vec.back().Salary = boost::lexical_cast<int>(GET_CONST_PTR(text));
+		vec.back().Salary = std::stoi(GET_CONST_PTR(text));
 #endif
 	});
 	doc.RegisterCommentFunctor(_TS("Employees|Employee"), [&vec](const TSTR& text)->void {
@@ -222,10 +222,6 @@ int main(int argc, char* argv[])
 			DisplayDoc(vecRead);
 		else
 			std::cout << "Cannot read file!" << std::endl;
-	}
-	catch (boost::bad_lexical_cast& e)
-	{
-		std::cout << e.what() << std::endl;
 	}
 	catch (std::exception& e)
 	{

@@ -2,7 +2,6 @@
 #include "../Utils/BoolHexUtil.h"
 #include "../Utils/StrConv.h"
 #include <cassert>
-#include <boost/lexical_cast.hpp>
 
 using namespace SequelMax;
 
@@ -256,19 +255,19 @@ char Element::GetChar(char defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<char>(StrConv::ConvToAString(src));
+		val = static_cast<char>(std::stoi(StrConv::ConvToAString(src)));
 	#else
-		val = boost::lexical_cast<char>(GET_CONST_PTR(src));
+		val = static_cast<char>(std::stoi(GET_CONST_PTR(src)));
 	#endif
 #else
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<char>(StrConv::ConvToAString(src));
+		val = static_cast<char>(std::stoi(StrConv::ConvToAString(src)));
 	#else
-		val = boost::lexical_cast<char>(src);
+		val = static_cast<char>(std::stoi(src));
 	#endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -286,19 +285,19 @@ short Element::GetInt16(short defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<short>(StrConv::ConvToAString(src));
+		val = static_cast<short>(std::stoi(StrConv::ConvToAString(src)));
 	#else
-		val = boost::lexical_cast<short>(GET_CONST_PTR(src));
+		val = static_cast<short>(std::stoi(GET_CONST_PTR(src)));
 	#endif
 #else
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<short>(StrConv::ConvToAString(src));
+		val = static_cast<short>(std::stoi(StrConv::ConvToAString(src)));
 	#else
-		val = boost::lexical_cast<short>(src);
+		val = static_cast<short>(std::stoi(src));
 	#endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -316,19 +315,19 @@ int Element::GetInt32(int defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<int>(StrConv::ConvToAString(src));
+		val = std::stoi(StrConv::ConvToAString(src));
 	#else
-		val = boost::lexical_cast<int>(GET_CONST_PTR(src));
+		val = std::stoi(GET_CONST_PTR(src));
 	#endif
 #else
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<int>(StrConv::ConvToAString(src));
+		val = std::stoi(StrConv::ConvToAString(src));
 	#else
-		val = boost::lexical_cast<int>(src);
+		val = std::stoi(src);
 	#endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -346,19 +345,19 @@ ELMAX_INT64 Element::GetInt64(ELMAX_INT64 defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<ELMAX_INT64>(StrConv::ConvToAString(src));
+		val = std::stoull(StrConv::ConvToAString(src));
 	#else
-		val = boost::lexical_cast<ELMAX_INT64>(GET_CONST_PTR(src));
+		val = std::stoull(GET_CONST_PTR(src));
 	#endif
 #else
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<ELMAX_INT64>(StrConv::ConvToAString(src));
+		val = std::stoull(StrConv::ConvToAString(src));
 	#else
-		val = boost::lexical_cast<ELMAX_INT64>(src);
+		val = std::stoull(src);
 	#endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -376,19 +375,19 @@ unsigned char Element::GetUChar(unsigned char defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned char>(StrConv::ConvToAString(src));
+		val = static_cast<unsigned char>(std::stoul(StrConv::ConvToAString(src)));
 	#else
-		val = boost::lexical_cast<unsigned char>(GET_CONST_PTR(src));
+		val = static_cast<unsigned char>(std::stoul(GET_CONST_PTR(src)));
 	#endif
 #else
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned char>(StrConv::ConvToAString(src));
+		val = static_cast<unsigned char>(std::stoul(StrConv::ConvToAString(src)));
 	#else
-		val = boost::lexical_cast<unsigned char>(src);
+		val = static_cast<unsigned char>(std::stoul(src));
 	#endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -406,19 +405,19 @@ unsigned short Element::GetUInt16(unsigned short defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned short>(StrConv::ConvToAString(src));
+		val = static_cast<unsigned short>(std::stoul(StrConv::ConvToAString(src)));
 	#else
-		val = boost::lexical_cast<unsigned short>(GET_CONST_PTR(src));
+		val = static_cast<unsigned short>(std::stoul(GET_CONST_PTR(src)));
 	#endif
 #else
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned short>(StrConv::ConvToAString(src));
+		val = static_cast<unsigned short>(std::stoul(StrConv::ConvToAString(src)));
 	#else
-		val = boost::lexical_cast<unsigned short>(src);
+		val = static_cast<unsigned short>(std::stoul(src));
 	#endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -436,19 +435,19 @@ unsigned int Element::GetUInt32(unsigned int defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned int>(StrConv::ConvToAString(src));
+		val = std::stoul(StrConv::ConvToAString(src));
 	#else
-		val = boost::lexical_cast<unsigned int>(GET_CONST_PTR(src));
+		val = std::stoul(GET_CONST_PTR(src));
 	#endif
 #else
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned int>(StrConv::ConvToAString(src));
+		val = std::stoul(StrConv::ConvToAString(src));
 	#else
-		val = boost::lexical_cast<unsigned int>(src);
+		val = std::stoul(src);
 	#endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -466,19 +465,19 @@ unsigned ELMAX_INT64 Element::GetUInt64(unsigned ELMAX_INT64 defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned ELMAX_INT64>(StrConv::ConvToAString(src));
+		val = std::stoull(StrConv::ConvToAString(src));
 	#else
-		val = boost::lexical_cast<unsigned ELMAX_INT64>(GET_CONST_PTR(src));
+		val = std::stoull(GET_CONST_PTR(src));
 	#endif
 #else
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned ELMAX_INT64>(StrConv::ConvToAString(src));
+		val = std::stoull(StrConv::ConvToAString(src));
 	#else
-		val = boost::lexical_cast<unsigned ELMAX_INT64>(src);
+		val = std::stoull(src);
 	#endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -496,19 +495,19 @@ float Element::GetFloat(float defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<float>(StrConv::ConvToAString(src));
+		val = std::stof(StrConv::ConvToAString(src));
 	#else
-		val = boost::lexical_cast<float>(GET_CONST_PTR(src));
+		val = std::stof(GET_CONST_PTR(src));
 	#endif
 #else
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<float>(StrConv::ConvToAString(src));
+		val = std::stof(StrConv::ConvToAString(src));
 	#else
-		val = boost::lexical_cast<float>(src);
+		val = std::stof(src);
 	#endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -526,19 +525,19 @@ double Element::GetDouble(double defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<double>(StrConv::ConvToAString(src));
+		val = std::stod(StrConv::ConvToAString(src));
 	#else
-		val = boost::lexical_cast<double>(GET_CONST_PTR(src));
+		val = std::stod(GET_CONST_PTR(src));
 	#endif
 #else
 	#ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<double>(StrConv::ConvToAString(src));
+		val = std::stod(StrConv::ConvToAString(src));
 	#else
-		val = boost::lexical_cast<double>(src);
+		val = std::stod(src);
 	#endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -647,19 +646,19 @@ char Element::GetAttrChar(const TSTR& name, char defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<char>(StrConv::ConvToAString(src));
+		val = static_cast<char>(std::stoi(StrConv::ConvToAString(src)));
 #else
-		val = boost::lexical_cast<char>(GET_CONST_PTR(src));
+		val = static_cast<char>(std::stoi(GET_CONST_PTR(src)));
 #endif
 #else
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<char>(StrConv::ConvToAString(src));
+		val = static_cast<char>(std::stoi(StrConv::ConvToAString(src)));
 #else
-		val = boost::lexical_cast<char>(src);
+		val = static_cast<char>(std::stoi(src));
 #endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -677,19 +676,19 @@ short Element::GetAttrInt16(const TSTR& name, short defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<short>(StrConv::ConvToAString(src));
+		val = static_cast<short>(std::stoi(StrConv::ConvToAString(src)));
 #else
-		val = boost::lexical_cast<short>(GET_CONST_PTR(src));
+		val = static_cast<short>(std::stoi(GET_CONST_PTR(src)));
 #endif
 #else
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<short>(StrConv::ConvToAString(src));
+		val = static_cast<short>(std::stoi(StrConv::ConvToAString(src)));
 #else
-		val = boost::lexical_cast<short>(src);
+		val = static_cast<short>(std::stoi(src));
 #endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -707,19 +706,19 @@ int Element::GetAttrInt32(const TSTR& name, int defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<int>(StrConv::ConvToAString(src));
+		val = std::stoi(StrConv::ConvToAString(src));
 #else
-		val = boost::lexical_cast<int>(GET_CONST_PTR(src));
+		val = std::stoi(GET_CONST_PTR(src));
 #endif
 #else
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<int>(StrConv::ConvToAString(src));
+		val = std::stoi(StrConv::ConvToAString(src));
 #else
-		val = boost::lexical_cast<int>(src);
+		val = std::stoi(src);
 #endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -737,19 +736,19 @@ ELMAX_INT64 Element::GetAttrInt64(const TSTR& name, ELMAX_INT64 defaultVal) cons
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<ELMAX_INT64>(StrConv::ConvToAString(src));
+		val = std::stoull(StrConv::ConvToAString(src));
 #else
-		val = boost::lexical_cast<ELMAX_INT64>(GET_CONST_PTR(src));
+		val = std::stoull(GET_CONST_PTR(src));
 #endif
 #else
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<ELMAX_INT64>(StrConv::ConvToAString(src));
+		val = std::stoull(StrConv::ConvToAString(src));
 #else
-		val = boost::lexical_cast<ELMAX_INT64>(src);
+		val = std::stoull(src);
 #endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -767,19 +766,19 @@ unsigned char Element::GetAttrUChar(const TSTR& name, unsigned char defaultVal) 
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned char>(StrConv::ConvToAString(src));
+		val = static_cast<unsigned char>(std::stoul(StrConv::ConvToAString(src)));
 #else
-		val = boost::lexical_cast<unsigned char>(GET_CONST_PTR(src));
+		val = static_cast<unsigned char>(std::stoul(GET_CONST_PTR(src)));
 #endif
 #else
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned char>(StrConv::ConvToAString(src));
+		val = static_cast<unsigned char>(std::stoul(StrConv::ConvToAString(src)));
 #else
-		val = boost::lexical_cast<unsigned char>(src);
+		val = static_cast<unsigned char>(std::stoul(src));
 #endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -797,19 +796,19 @@ unsigned short Element::GetAttrUInt16(const TSTR& name, unsigned short defaultVa
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned short>(StrConv::ConvToAString(src));
+		val = static_cast<unsigned short>(std::stoul(StrConv::ConvToAString(src)));
 #else
-		val = boost::lexical_cast<unsigned short>(GET_CONST_PTR(src));
+		val = static_cast<unsigned short>(std::stoul(GET_CONST_PTR(src)));
 #endif
 #else
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned short>(StrConv::ConvToAString(src));
+		val = static_cast<unsigned short>(std::stoul(StrConv::ConvToAString(src)));
 #else
-		val = boost::lexical_cast<unsigned short>(src);
+		val = static_cast<unsigned short>(std::stoul(src));
 #endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -827,19 +826,19 @@ unsigned int Element::GetAttrUInt32(const TSTR& name, unsigned int defaultVal) c
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned int>(StrConv::ConvToAString(src));
+		val = std::stoul(StrConv::ConvToAString(src));
 #else
-		val = boost::lexical_cast<unsigned int>(GET_CONST_PTR(src));
+		val = std::stoul(GET_CONST_PTR(src));
 #endif
 #else
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned int>(StrConv::ConvToAString(src));
+		val = std::stoul(StrConv::ConvToAString(src));
 #else
-		val = boost::lexical_cast<unsigned int>(src);
+		val = std::stoul(src);
 #endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -857,19 +856,19 @@ unsigned ELMAX_INT64 Element::GetAttrUInt64(const TSTR& name, unsigned ELMAX_INT
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned ELMAX_INT64>(StrConv::ConvToAString(src));
+		val = std::stoull(StrConv::ConvToAString(src));
 #else
-		val = boost::lexical_cast<unsigned ELMAX_INT64>(GET_CONST_PTR(src));
+		val = std::stoull(GET_CONST_PTR(src));
 #endif
 #else
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<unsigned ELMAX_INT64>(StrConv::ConvToAString(src));
+		val = std::stoull(StrConv::ConvToAString(src));
 #else
-		val = boost::lexical_cast<unsigned ELMAX_INT64>(src);
+		val = std::stoull(src);
 #endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -887,19 +886,19 @@ float Element::GetAttrFloat(const TSTR& name, float defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<float>(StrConv::ConvToAString(src));
+		val = std::stof(StrConv::ConvToAString(src));
 #else
-		val = boost::lexical_cast<float>(GET_CONST_PTR(src));
+		val = std::stof(GET_CONST_PTR(src));
 #endif
 #else
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<float>(StrConv::ConvToAString(src));
+		val = std::stof(StrConv::ConvToAString(src));
 #else
-		val = boost::lexical_cast<float>(src);
+		val = std::stof(src);
 #endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}
@@ -917,19 +916,19 @@ double Element::GetAttrDouble(const TSTR& name, double defaultVal) const
 	{
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<double>(StrConv::ConvToAString(src));
+		val = std::stod(StrConv::ConvToAString(src));
 #else
-		val = boost::lexical_cast<double>(GET_CONST_PTR(src));
+		val = std::stod(GET_CONST_PTR(src));
 #endif
 #else
 #ifdef ELMAX_USE_UNICODE
-		val = boost::lexical_cast<double>(StrConv::ConvToAString(src));
+		val = std::stod(StrConv::ConvToAString(src));
 #else
-		val = boost::lexical_cast<double>(src);
+		val = std::stod(src);
 #endif
 #endif
 	}
-	catch (boost::bad_lexical_cast &)
+	catch (std::exception &)
 	{
 		val = defaultVal;
 	}

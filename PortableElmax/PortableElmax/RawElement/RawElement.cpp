@@ -3,7 +3,6 @@
 #include "RawComment.h"
 #include <vector>
 #include <iostream>
-#include <boost/lexical_cast.hpp>
 #include "../Utils/StrConv.h"
 
 using namespace Elmax;
@@ -1120,26 +1119,26 @@ void RawElement::PrintStack(size_t pos, size_t line, const std::string& error, s
 		StackElement.pop();
 	}
 	std::vector<stNode>::const_reverse_iterator it = vecTemp.rbegin();
-	std::string err=error+":Parsing error near pos="+boost::lexical_cast<std::string>(pos)+", line no.="+boost::lexical_cast<std::string>(line)+":";
+	std::string err=error+":Parsing error near pos="+std::to_string(pos)+", line no.="+std::to_string(line)+":";
 
 #if defined ELMAX_USE_MFC_CSTRING || defined ELMAX_USE_CUSTOM_STRING
 	#ifdef ELMAX_USE_UNICODE
 		for(;it!=vecTemp.rend();++it)
-			err += "<" + StrConv::ConvToAString(it->ptr->GetName()) + " LineNum:"+boost::lexical_cast<std::string>(it->line_num) +  ">";
+			err += "<" + StrConv::ConvToAString(it->ptr->GetName()) + " LineNum:"+std::to_string(it->line_num) +  ">";
 	#else
 		for(;it!=vecTemp.rend();++it)
 			err += "<";
 			err += GET_CONST_PTR(it->ptr->GetName());
-			err += " LineNum:"+boost::lexical_cast<std::string>(it->line_num);
+			err += " LineNum:"+std::to_string(it->line_num);
 			err	+= ">";
 	#endif
 #else
 	#ifdef ELMAX_USE_UNICODE
 		for(;it!=vecTemp.rend();++it)
-			err += "<" + StrConv::ConvToAString(it->ptr->GetName()) + " LineNum:"+boost::lexical_cast<std::string>(it->line_num) +  ">";
+			err += "<" + StrConv::ConvToAString(it->ptr->GetName()) + " LineNum:"+std::to_string(it->line_num) +  ">";
 	#else
 		for(;it!=vecTemp.rend();++it)
-			err += "<" + it->ptr->GetName() + " LineNum:"+boost::lexical_cast<std::string>(it->line_num) +  ">";
+			err += "<" + it->ptr->GetName() + " LineNum:"+std::to_string(it->line_num) +  ">";
 	#endif
 #endif
 	throw std::runtime_error(err);
