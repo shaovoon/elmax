@@ -71,8 +71,8 @@ namespace UnitTestElmax
 
 			Element::available_child_t acmap = root[_TS("bb")].QueryChildrenNum();
 
-			Assert::AreEqual(acmap[_TS("cc")], (unsigned int)(3));
-			Assert::AreEqual(acmap[_TS("qq")], (unsigned int)(2));
+			Assert::AreEqual(acmap[_TS("cc")], (size_t)(3));
+			Assert::AreEqual(acmap[_TS("qq")], (size_t)(2));
 
 			TSTR file = GetFolderPath() + _TS("QueryChildrenNum1.xml");
 			root.Save(file, FT_UTF8);
@@ -83,8 +83,8 @@ namespace UnitTestElmax
 
 			Element::available_child_t acmap2 = root2[_TS("bb")].QueryChildrenNum();
 
-			Assert::AreEqual(acmap2[_TS("cc")], (unsigned int)(3));
-			Assert::AreEqual(acmap2[_TS("qq")], (unsigned int)(2));
+			Assert::AreEqual(acmap2[_TS("cc")], (size_t)(3));
+			Assert::AreEqual(acmap2[_TS("qq")], (size_t)(2));
 		}
 		TEST_METHOD(QueryChildrenNum2)
 		{
@@ -106,8 +106,8 @@ namespace UnitTestElmax
 
 			Element::available_child_t acmap = root[_TS("bb")].QueryChildrenNum();
 
-			Assert::AreEqual(acmap[_TS("cc")], (unsigned int)(3));
-			Assert::AreEqual(acmap[_TS("qq")], (unsigned int)(2));
+			Assert::AreEqual(acmap[_TS("cc")], (size_t)(3));
+			Assert::AreEqual(acmap[_TS("qq")], (size_t)(2));
 
 			TSTR file = GetFolderPath() + _TS("QueryChildrenNum2.xml");
 			root.Save(file, FT_UTF8);
@@ -118,8 +118,8 @@ namespace UnitTestElmax
 
 			Element::available_child_t acmap2 = root2[_TS("bb")].QueryChildrenNum();
 
-			Assert::AreEqual(acmap2[_TS("cc")], (unsigned int)(3));
-			Assert::AreEqual(acmap2[_TS("qq")], (unsigned int)(2));
+			Assert::AreEqual(acmap2[_TS("cc")], (size_t)(3));
+			Assert::AreEqual(acmap2[_TS("qq")], (size_t)(2));
 		}
 		TEST_METHOD(AsCollection1)
 		{
@@ -137,7 +137,7 @@ namespace UnitTestElmax
 
 			Element::collection_t vec = root[_TS("bb")][_TS("cc")].AsCollection();
 
-			Assert::AreNotEqual(vec.size(), 0U);
+			Assert::AreNotEqual(vec.size(), (size_t)0U);
 			for(size_t i=0;i<vec.size(); ++i)
 			{
 				Assert::AreEqual(vec.at(i).GetInt32(10), (int)(11*(i+1)));
@@ -152,7 +152,7 @@ namespace UnitTestElmax
 
 			Element::collection_t vec2 = root2[_TS("bb")][_TS("cc")].AsCollection();
 
-			Assert::AreNotEqual(vec2.size(), 0U);
+			Assert::AreNotEqual(vec2.size(), (size_t)0U);
 			for(size_t i=0;i<vec2.size(); ++i)
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
@@ -174,7 +174,7 @@ namespace UnitTestElmax
 
 			Element::collection_t vec = root[_TS("bb")][_TS("cc")].AsCollection();
 
-			Assert::AreNotEqual(vec.size(), 0U);
+			Assert::AreNotEqual(vec.size(), (size_t)0U);
 			for(size_t i=0;i<vec.size(); ++i)
 			{
 				Assert::AreEqual(vec.at(i).GetInt32(10), (int)(11*(i+1)));
@@ -189,7 +189,7 @@ namespace UnitTestElmax
 
 			Element::collection_t vec2 = root2[_TS("bb")][_TS("cc")].AsCollection();
 
-			Assert::AreNotEqual(vec2.size(), 0U);
+			Assert::AreNotEqual(vec2.size(), (size_t)0U);
 			for(size_t i=0;i<vec2.size(); ++i)
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
@@ -212,7 +212,7 @@ namespace UnitTestElmax
 			Pred pred;
 			Element::collection_t vec = root[_TS("bb")][_TS("cc")].AsCollection(pred);
 
-			Assert::AreEqual(vec.size(), 2U);
+			Assert::AreEqual(vec.size(), (size_t)2U);
 			for(size_t i=0;i<vec.size(); ++i)
 			{
 				Assert::AreEqual(vec.at(i).GetInt32(10), (int)(11*(i+1)));
@@ -227,7 +227,7 @@ namespace UnitTestElmax
 
 			Element::collection_t vec2 = root2[_TS("bb")][_TS("cc")].AsCollection(pred);
 
-			Assert::AreEqual(vec2.size(), 2U);
+			Assert::AreEqual(vec2.size(), (size_t)2U);
 			for(size_t i=0;i<vec2.size(); ++i)
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
@@ -249,7 +249,7 @@ namespace UnitTestElmax
 
 			Element::collection_t vec = root[_TS("bb")].GetChildren(_TS("cc"));
 
-			Assert::AreNotEqual(vec.size(), 0U);
+			Assert::AreNotEqual(vec.size(), (size_t)0U);
 			for(size_t i=0;i<vec.size(); ++i)
 			{
 				Assert::AreEqual(vec.at(i).GetInt32(10), (int)(11*(i+1)));
@@ -264,7 +264,7 @@ namespace UnitTestElmax
 
 			Element::collection_t vec2 = root2[_TS("bb")].GetChildren(_TS("cc"));
 
-			Assert::AreNotEqual(vec2.size(), 0U);
+			Assert::AreNotEqual(vec2.size(), (size_t)0U);
 			for(size_t i=0;i<vec2.size(); ++i)
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
@@ -286,7 +286,7 @@ namespace UnitTestElmax
 
 			Element::collection_t vec = root[_TS("bb")].GetChildren(_TS("cc"));
 
-			Assert::AreNotEqual(vec.size(), 0U);
+			Assert::AreNotEqual(vec.size(), (size_t)0U);
 			for(size_t i=0;i<vec.size(); ++i)
 			{
 				Assert::AreEqual(vec.at(i).GetInt32(10), (int)(11*(i+1)));
@@ -301,7 +301,7 @@ namespace UnitTestElmax
 
 			Element::collection_t vec2 = root2[_TS("bb")].GetChildren(_TS("cc"));
 
-			Assert::AreNotEqual(vec2.size(), 0U);
+			Assert::AreNotEqual(vec2.size(), (size_t)0U);
 			for(size_t i=0;i<vec2.size(); ++i)
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
@@ -324,7 +324,7 @@ namespace UnitTestElmax
 			Pred pred;
 			Element::collection_t vec = root[_TS("bb")].Filter(_TS("cc"),  pred);
 
-			Assert::AreEqual(vec.size(), 2U);
+			Assert::AreEqual(vec.size(), (size_t)2U);
 			for(size_t i=0;i<vec.size(); ++i)
 			{
 				Assert::AreEqual(vec.at(i).GetInt32(10), (int)(11*(i+1)));
@@ -339,7 +339,7 @@ namespace UnitTestElmax
 
 			Element::collection_t vec2 = root2[_TS("bb")].Filter(_TS("cc"),  pred);
 
-			Assert::AreEqual(vec2.size(), 2U);
+			Assert::AreEqual(vec2.size(), (size_t)2U);
 			for(size_t i=0;i<vec2.size(); ++i)
 			{
 				Assert::AreEqual(vec2.at(i).GetInt32(10), (int)(11*(i+1)));
