@@ -1450,18 +1450,18 @@ bool RawElement::ReadAttributeName(const TSTR& src, size_t& index, TSTR& dest, s
 bool RawElement::ReadAttributeValue(const TSTR& src, size_t& index, TSTR& dest)
 {
 	dest = _TS("");
-	++index;
-	if(src[index]==_TS('\"')&&src[index+1]==_TS('\"'))
+	_ELCHAR QuoteUsed = src[index++];
+	if (src[index] == QuoteUsed && src[index + 1] == QuoteUsed)
 	{
 		++index;
 		return true;
 	}
-	while(src[index]!=_TS('\"'))
+	while (src[index] != QuoteUsed)
 	{
 		dest += src[index];
 		++index;
 
-		if(index>=GET_SIZE(src))
+		if (index >= GET_SIZE(src))
 			return false;
 	}
 
