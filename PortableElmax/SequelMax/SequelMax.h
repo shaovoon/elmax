@@ -72,7 +72,7 @@
 #   elif defined(_WIN32)
 #	    ifdef _DEBUG
 #		    pragma comment(lib, "../Debug/SequelMaxD.lib")
-#		    pragma comment(lib, "../Debug/FileIOD.lib")
+#		    pragma comment(lib, "../Debug/FileIO.lib")
 #	    else 
 #		    pragma comment(lib, "../Release/SequelMax.lib")
 #		    pragma comment(lib, "../Release/FileIO.lib")
